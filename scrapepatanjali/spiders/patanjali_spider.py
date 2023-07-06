@@ -2,6 +2,7 @@ import scrapy
 import csv
 from collections import OrderedDict
 import os
+from urllib.parse import urlparse
 
 class PatanjaliSpider(scrapy.Spider):
     name = "patanjali"
@@ -115,9 +116,12 @@ class PatanjaliSpider(scrapy.Spider):
         otherProductInfo_string=otherProductInfo if otherProductInfo is not None else ""
         variants = variants if variants is not None else ""
         productImage = productImage if productImage is not None else ""
-
+        parsed_url = urlparse(response.url)
+        path_parts = parsed_url.path.split('/')
+        category = path_parts[2]
         data = {
             "url": response.url,
+            'Tags': category,
             #'breadcrumb1': response.css('div.block-breadcrumb>ul.breadcrumb>li:nth-child(2)>a::text').get(),
             #'breadcrumb2': response.css('div.block-breadcrumb>ul.breadcrumb>li:nth-child(3)>a::text').get(),
             "lastbreadcrumb": lastbreadcrumb,

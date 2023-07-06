@@ -2,15 +2,7 @@ import csv
 import time
 import os
 import logging
-
-def trim_and_add_hyphens(string):
-    trimmed_string = string.strip()
-    split_string = trimmed_string.split()
-    modified_string = "-".join(split_string)
-    return modified_string
-
-def input_output_folder():
-    return f"{os.path.dirname(os.path.abspath(__file__))}/output"
+from utilities import trim_and_add_hyphens, input_output_folder
 
 log_file = os.path.join(input_output_folder(), 'error.log')
 logging.basicConfig(
@@ -33,12 +25,12 @@ def process_input_file():
             description = row['Description']
             sizes = row['Size'].split(',')
             image = row['Image']
-
+            tags = row['Tags']
             for size in sizes:
-                item = process_row(url, last_breadcrumb, heading, description, size.strip(), image)
+                item = process_row(url, last_breadcrumb, heading, description, size.strip(), image, tags)
                 yield item
 
-def process_row(url, last_breadcrumb, heading, description, size, image):
+def process_row(url, last_breadcrumb, heading, description, size, image, tags):
     item = {
         'Product Id': '',
         'Variant Id': '',
@@ -47,7 +39,7 @@ def process_row(url, last_breadcrumb, heading, description, size, image):
         'Body (Html)': description,
         'Vendor': 'Patanjali',
         'Type': '',
-        'Tags': '',
+        'Tags': tags,
         'Published': 'TRUE',
         'Option Fulfill Value': '',
         'Custom Option': '[]',
@@ -103,7 +95,7 @@ def process_row(url, last_breadcrumb, heading, description, size, image):
         'Base Cost Variant': ''
     }
     return item
-
+#https://help.shopbase.com/en/article/import-products-to-shopbase-by-csv-file-s0aqya/
 def generate_output_file():
     start_time = time.time()
     output_file_path = f'{input_output_folder()}/shopbase-import.csv'
