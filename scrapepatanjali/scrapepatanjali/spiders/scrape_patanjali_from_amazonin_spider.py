@@ -3,7 +3,7 @@ import csv
 from collections import OrderedDict
 import os
 import logging
-from .utilities import trim_and_add_hyphens, input_output_folder
+from ..utilities import trim_and_add_hyphens, input_output_folder
 
 log_file = os.path.join(input_output_folder(), 
                         'ScrapePatanjaliBasedOnAmazonIn-error.log')

@@ -4,7 +4,9 @@ from collections import OrderedDict
 import os
 from urllib.parse import urlparse
 import logging
-from .utilities import trim_and_add_hyphens, input_output_folder
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from scrapepatanjali.scrapepatanjali.utilities import trim_and_add_hyphens, input_output_folder
 
 class PatanjaliSpider(scrapy.Spider):
     name = "patanjali"
@@ -148,7 +150,13 @@ class PatanjaliSpider(scrapy.Spider):
         if productImage != "":
             yield scrapy.Request(productImage, callback=self.parse_image)
 
-        with open(os.path.join(input_output_folder(), "patanjali-ayurved-scrape.csv"), 
+        filepath=os.path.join(input_output_folder(), "patanjali-ayurved-scrape.csv")
+        if not os.path.isfile(filepath):
+            with open(filepath, "w", newline="", encoding="utf-8") as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=data.keys())
+                writer.writeheader()
+
+        with open(filepath, 
                   "a", newline="", encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=data.keys())
             writer.writerow(data)

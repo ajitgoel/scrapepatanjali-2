@@ -2,6 +2,8 @@ import csv
 import time
 import os
 import logging
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities import trim_and_add_hyphens, input_output_folder
 
 def process_input_file():
@@ -12,12 +14,12 @@ def process_input_file():
         logging.info(f"Number of rows in input file: {len(rows)}")
         
         for row in rows:
-            url = row['URL']
+            url = row['url']
             last_breadcrumb = trim_and_add_hyphens(row['lastbreadcrumb'])
-            heading = row['Heading']
-            description = row['Description']
-            sizes = row['Size'].split(',')
-            image = row['Image']
+            heading = row['heading']
+            description = row['product-information']
+            sizes = row['variants'].split(',')
+            image = row['product-image']
             tags = row['Tags']
             for size in sizes:
                 item = process_row(url, last_breadcrumb, heading, description, size.strip(), image, tags)
