@@ -1,0 +1,483 @@
+Product Id,Variant Id,Handle,Title,URL,Body (Html),Vendor,Type,Tags,Published,Option Fulfill Value,Custom Option,Option1 Name,Option1 Value,Option2 Name,Option2 Value,Option3 Name,Option3 Value,Variant Sku,Variant Grams,Variant Inventory Tracker,Variant Inventory Qty,Variant Inventory Policy,Variant Fulfillment Service,Variant Price,Variant Compare At Price,Variant Requires Shipping,Variant Taxable,Variant Barcode,Image Src,Image Position,Image Alt Text,Gift Card,Google Shopping / Mpn,Google Shopping / Age Group,Google Shopping / Gender,Google Shopping / Google Product Category,Seo Title,Seo Description,Google Shopping / Adwords Grouping,Google Shopping / Adwords Labels,Google Shopping / Condition,Google Shopping / Custom Product,Google Shopping / Custom Label 0,Google Shopping / Custom Label 1,Google Shopping / Custom Label 2,Google Shopping / Custom Label 3,Google Shopping / Custom Label 4,Variant Image,Variant Weight Unit,Variant Tax Code,Cost Per Item,Available On Listing Pages,Available On Sitemap Files,Template,Shipping Profile Name,Variant Tag,Facebook Pixel Id,Facebook Access Token,Product Stock Status,Shipping Fee,Base Cost Variant
+,,aastha-agarbatti-sandal---18-stick,Aastha Agarbatti Sandal - 18 Stick,,,Patanjali,,agarbatti,TRUE,,,Size,18 stick,,,,,,0,,,continue,manual,0,0,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,0,TRUE,TRUE,Default,,,,,,,
+,,aastha-agarbatti-tathastu---18-stick,Aastha Agarbatti Tathastu - 18 Stick,,,Patanjali,,agarbatti,TRUE,,,Size,18 stick,,,,,,1,,,continue,manual,1,1,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,1,TRUE,TRUE,Default,,,,,,,
+,,aastha-agarbatti-rose---18-stick,Aastha Agarbatti Rose - 18 Stick,,,Patanjali,,agarbatti,TRUE,,,Size,18 stick,,,,,,2,,,continue,manual,2,2,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,2,TRUE,TRUE,Default,,,,,,,
+,,aastha-agarbatti-rose---20-gm,Aastha Agarbatti Rose -  20 Gm,,,Patanjali,,agarbatti,TRUE,,,Size,20 gm,,,,,,3,,,continue,manual,3,3,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,3,TRUE,TRUE,Default,,,,,,,
+,,aastha-agarbatti-sandal---20-gm,Aastha Agarbatti Sandal - 20 Gm,,,Patanjali,,agarbatti,TRUE,,,Size,20 gm,,,,,,4,,,continue,manual,4,4,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,4,TRUE,TRUE,Default,,,,,,,
+,,aastha-agarbatti-tathastu---20-gm,Aastha Agarbatti Tathastu - 20 Gm,,,Patanjali,,agarbatti,TRUE,,,Size,20 gm,,,,,,5,,,continue,manual,5,5,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,5,TRUE,TRUE,Default,,,,,,,
+,,aastha-agarbatti-rajnigandha---20-gm,Aastha Agarbatti Rajnigandha -  20 Gm,,,Patanjali,,agarbatti,TRUE,,,Size,20 gm,,,,,,6,,,continue,manual,6,6,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,6,TRUE,TRUE,Default,,,,,,,
+,,aastha-agarbatti-shanti---20-gm,Aastha Agarbatti Shanti - 20 Gm,,,Patanjali,,agarbatti,TRUE,,,Size,20 gm,,,,,,7,,,continue,manual,7,7,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,7,TRUE,TRUE,Default,,,,,,,
+,,aastha-agarbatti-rat-ki-rani---20-gm,Aastha Agarbatti Rat Ki Rani - 20 Gm,,,Patanjali,,agarbatti,TRUE,,,Size,20 gm,,,,,,8,,,continue,manual,8,8,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,8,TRUE,TRUE,Default,,,,,,,
+,,aastha-bhakti-dhoop--10-stick,Aastha Bhakti Dhoop -10 Stick,,,Patanjali,,dhoop,TRUE,,,Size,10 stick,,,,,,9,,,continue,manual,9,9,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,9,TRUE,TRUE,Default,,,,,,,
+,,aastha-bhakti-dhoop--20-stick,Aastha Bhakti Dhoop -20 Stick,,,Patanjali,,dhoop,TRUE,,,Size,20 stick,,,,,,10,,,continue,manual,10,10,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,10,TRUE,TRUE,Default,,,,,,,
+,,aastha-deluxe-dhoop-20-n,Aastha Deluxe Dhoop 20 N,,,Patanjali,,dhoop,TRUE,,,Size,20 N,,,,,,11,,,continue,manual,11,11,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,11,TRUE,TRUE,Default,,,,,,,
+,,aastha-gugal-dhoop-20-n,Aastha Gugal Dhoop 20 N,,,Patanjali,,dhoop,TRUE,,,Size,20 N,,,,,,12,,,continue,manual,12,12,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,12,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-hair-conditioner---almond,Patanjali Kesh Kanti Hair Conditioner - Almond ,,,Patanjali,,"shampoo, best-selling",TRUE,,,Size,100 gm,,,,,,13,,,continue,manual,13,13,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,13,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-hair-conditioner-damage-control,Patanjali Kesh Kanti Hair Conditioner (Damage Control ),,,Patanjali,,"shampoo, best-selling",TRUE,,,Size,100 gm,,,,,,14,,,continue,manual,14,14,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,14,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-hair-conditioner-protein,Patanjali Kesh Kanti Hair Conditioner-Protein,,,Patanjali,,"shampoo, best-selling",TRUE,,,Size,100 gm,,,,,,15,,,continue,manual,15,15,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,15,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-hair-conditioner-colour-protection,Patanjali Kesh Kanti Hair Conditioner-Colour Protection,,,Patanjali,,"shampoo, best-selling",TRUE,,,Size,100 gm,,,,,,16,,,continue,manual,16,16,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,16,TRUE,TRUE,Default,,,,,,,
+,,patanjali-aloevera-moisturizing-cream,Patanjali Aloevera Moisturizing Cream,,,Patanjali,,cream,TRUE,,,Size,50 gm,,,,,,17,,,continue,manual,17,17,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,17,TRUE,TRUE,Default,,,,,,,
+,,patanjali-footcare-cream,Patanjali Footcare Cream ,,,Patanjali,,cream,TRUE,,,Size,50 gm,,,,,,18,,,continue,manual,18,18,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,18,TRUE,TRUE,Default,,,,,,,
+,,moisturizer-cream-50-g,Moisturizer Cream 50 G,,,Patanjali,,cream,TRUE,,,Size,50 gm,,,,,,19,,,continue,manual,19,19,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,19,TRUE,TRUE,Default,,,,,,,
+,,sun-screen-cream-spf30--50gm,Sun Screen Cream Spf30- 50Gm,,,Patanjali,,cream,TRUE,,,Size,50 gm,,,,,,20,,,continue,manual,20,20,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,20,TRUE,TRUE,Default,,,,,,,
+,,saundarya-nourishing-cream,Saundarya Nourishing Cream,,,Patanjali,,cream,TRUE,,,Size,50 gm,,,,,,21,,,continue,manual,21,21,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,21,TRUE,TRUE,Default,,,,,,,
+,,patanjali-beauty-cream,Patanjali Beauty Cream,,,Patanjali,,cream,TRUE,,,Size,25 gm,,,,,,22,,,continue,manual,22,22,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,22,TRUE,TRUE,Default,,,,,,,
+,,neem-kanti-body-cleanser-50-gm,Neem Kanti Body Cleanser 50 Gm,,,Patanjali,,"soap, best-selling",TRUE,,,Size,50 gm,,,,,,23,,,continue,manual,23,23,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,23,TRUE,TRUE,Default,,,,,,,
+,,neem-kanti-body-cleanser-4x1-50-gm,Neem Kanti Body Cleanser-(4X1) 50 Gm,,,Patanjali,,"soap, best-selling",TRUE,,,Size,50 gm,,,,,,24,,,continue,manual,24,24,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,24,TRUE,TRUE,Default,,,,,,,
+,,haldi-chandan-kanti-body-cleanser-57-gm,Haldi Chandan Kanti Body Cleanser 57 Gm,,,Patanjali,,"soap, best-selling",TRUE,,,Size,57 gm,,,,,,25,,,continue,manual,25,25,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,25,TRUE,TRUE,Default,,,,,,,
+,,haldi-chandan-kanti-body-cln-4x1-57-gm,Haldi Chandan Kanti Body Cln-(4X1) 57 Gm,,,Patanjali,,soap,TRUE,,,Size,57 gm,,,,,,26,,,continue,manual,26,26,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,26,TRUE,TRUE,Default,,,,,,,
+,,aloevera-kanti-body-cleanser-4x1-57-gm,Aloevera Kanti Body Cleanser-(4X1) 57 Gm,,,Patanjali,,"soap, best-selling",TRUE,,,Size,57 gm,,,,,,27,,,continue,manual,27,27,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,27,TRUE,TRUE,Default,,,,,,,
+,,aloevera-kanti-body-cleanser-4x1-57gm,Aloevera Kanti Body Cleanser-(4X1) 57Gm,,,Patanjali,,"soap, best-selling",TRUE,,,Size,57 gm,,,,,,28,,,continue,manual,28,28,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,28,TRUE,TRUE,Default,,,,,,,
+,,haldi-chandan-kanti-body-cln-4x1-75-gm,Haldi Chandan Kanti Body Cln-(4X1) 75 Gm,,,Patanjali,,soap,TRUE,,,Size,75 gm,,,,,,29,,,continue,manual,29,29,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,29,TRUE,TRUE,Default,,,,,,,
+,,aloevera-kanti-body-cleanser-4x1-75-gm,Aloevera Kanti Body Cleanser-(4X1) 75 Gm,,,Patanjali,,"soap, best-selling",TRUE,,,Size,75 gm,,,,,,30,,,continue,manual,30,30,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,30,TRUE,TRUE,Default,,,,,,,
+,,saundarya-sandal-body-cleanser-75-g,Saundarya Sandal Body Cleanser 75 G,,,Patanjali,,"soap, best-selling",TRUE,,,Size,75 gm,,,,,,31,,,continue,manual,31,31,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,31,TRUE,TRUE,Default,,,,,,,
+,,germi-x-antiseptic-soap-75-gm,Germi X Antiseptic Soap 75 Gm,,,Patanjali,,soap,TRUE,,,Size,75 gm,,,,,,32,,,continue,manual,32,32,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,32,TRUE,TRUE,Default,,,,,,,
+,,haldi-chndn-k.body-cnsr75g-co-sachet,Haldi Chndn K.Body Cnsr75G Co Sachet,,,Patanjali,,soap,TRUE,,,Size,75 gm,,,,,,33,,,continue,manual,33,33,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,33,TRUE,TRUE,Default,,,,,,,
+,,neem-k.-body-cleanser-75g-co-sachet,Neem K. Body Cleanser 75G Co Sachet ,,,Patanjali,,"soap, best-selling",TRUE,,,Size,75 gm,,,,,,34,,,continue,manual,34,34,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,34,TRUE,TRUE,Default,,,,,,,
+,,aloevera-k.-body-cnsr-75g-co-sachet,Aloevera K. Body Cnsr 75G Co Sachet,,,Patanjali,,soap,TRUE,,,Size,75 gm,,,,,,35,,,continue,manual,35,35,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,35,TRUE,TRUE,Default,,,,,,,
+,,patanjali-aloevera-kanti-body-cleanser,Patanjali Aloevera Kanti Body Cleanser,,,Patanjali,,"soap, best-selling",TRUE,,,Size,75 gm,,,,,,36,,,continue,manual,36,36,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,36,TRUE,TRUE,Default,,,,,,,
+,,patanjali-haldi-chandan-kanti-body-cleanser,Patanjali Haldi Chandan Kanti Body Cleanser,,,Patanjali,,"soap, best-selling",TRUE,,,Size,75 gm,,,,,,37,,,continue,manual,37,37,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,37,TRUE,TRUE,Default,,,,,,,
+,,patanjali-mint-tulsi-mint-&-holy-basil-body-cleanser,Patanjali Mint Tulsi (Mint & Holy Basil) Body Cleanser,,,Patanjali,,"soap, best-selling",TRUE,,,Size,75 gm,,,,,,38,,,continue,manual,38,38,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,38,TRUE,TRUE,Default,,,,,,,
+,,patanjali-mogra-body-cleanser,Patanjali Mogra Body Cleanser,,,Patanjali,,"soap, best-selling",TRUE,,,Size,75 gm,,,,,,39,,,continue,manual,39,39,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,39,TRUE,TRUE,Default,,,,,,,
+,,patanjali-multani-mitti-fuller's-earth-body-cleanser,Patanjali Multani Mitti (Fuller'S Earth) Body Cleanser,,,Patanjali,,"soap, best-selling",TRUE,,,Size,75 gm,,,,,,40,,,continue,manual,40,40,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,40,TRUE,TRUE,Default,,,,,,,
+,,patanjali-neem-kanti-body-cleanser,Patanjali Neem Kanti Body Cleanser,,,Patanjali,,"soap, best-selling",TRUE,,,Size,75 gm,,,,,,41,,,continue,manual,41,41,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,41,TRUE,TRUE,Default,,,,,,,
+,,patanjali-rose-body-cleanser,Patanjali Rose Body Cleanser,,,Patanjali,,"soap, best-selling",TRUE,,,Size,125 gm,,,,,,42,,,continue,manual,42,42,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,42,TRUE,TRUE,Default,,,,,,,
+,,patanjali-nourishing�-aloevera-soap,Patanjali Nourishing� Aloevera Soap,,,Patanjali,,soap,TRUE,,,Size,125 gm,,,,,,43,,,continue,manual,43,43,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,43,TRUE,TRUE,Default,,,,,,,
+,,patanjali-exfoliating-mud-soap,Patanjali Exfoliating Mud Soap ,,,Patanjali,,soap,TRUE,,,Size,125 gm,,,,,,44,,,continue,manual,44,44,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,44,TRUE,TRUE,Default,,,,,,,
+,,patanjali-rejuvenating-turmeric-&-sandalwood-soap,Patanjali Rejuvenating Turmeric & Sandalwood Soap,,,Patanjali,,soap,TRUE,,,Size,125 gm,,,,,,45,,,continue,manual,45,45,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,45,TRUE,TRUE,Default,,,,,,,
+,,patanjali-protecting-neem-soap,Patanjali Protecting Neem Soap ,,,Patanjali,,soap,TRUE,,,Size,125 gm,,,,,,46,,,continue,manual,46,46,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,46,TRUE,TRUE,Default,,,,,,,
+,,haldi-chandan-kanti-body-cleanser-150-gm,Haldi Chandan Kanti Body Cleanser 150 Gm,,,Patanjali,,"soap, best-selling",TRUE,,,Size,150 gm,,,,,,47,,,continue,manual,47,47,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,47,TRUE,TRUE,Default,,,,,,,
+,,aloevera-kanti-body-cleanser-150-g,Aloevera Kanti Body Cleanser 150 G,,,Patanjali,,"soap, best-selling",TRUE,,,Size,150 gm,,,,,,48,,,continue,manual,48,48,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,48,TRUE,TRUE,Default,,,,,,,
+,,neem-kanti-body-cleanser-150-gm,Neem Kanti Body Cleanser 150 Gm,,,Patanjali,,"soap, best-selling",TRUE,,,Size,150 gm,,,,,,49,,,continue,manual,49,49,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,49,TRUE,TRUE,Default,,,,,,,
+,,patanjali-neem-aloe-vera-face-pack-with-cucumber,Patanjali Neem-Aloe Vera Face Pack ( With Cucumber ),,,Patanjali,,face-wash,TRUE,,,Size,60 ml,,,,,,50,,,continue,manual,50,50,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,50,TRUE,TRUE,Default,,,,,,,
+,,patanjali-multani-mitti-face-pack-with-mineral-clay-&-aloe-vera,Patanjali Multani Mitti Face Pack ( With Mineral Clay & Aloe Vera ),,,Patanjali,,face-wash,TRUE,,,Size,60 ml,,,,,,51,,,continue,manual,51,51,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,51,TRUE,TRUE,Default,,,,,,,
+,,orange-aloevera-face-wash,Orange Aloevera Face Wash,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,60 gm,,,,,,52,,,continue,manual,52,52,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,52,TRUE,TRUE,Default,,,,,,,
+,,patanjali-lemon-honey-face-wash,Patanjali Lemon Honey Face Wash,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,60 gm,,,,,,53,,,continue,manual,53,53,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,53,TRUE,TRUE,Default,,,,,,,
+,,orange-honey-facewash-60-g,Orange Honey Facewash 60 G,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,60 gm,,,,,,54,,,continue,manual,54,54,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,54,TRUE,TRUE,Default,,,,,,,
+,,patanjali-rose-face-wash,Patanjali Rose Face Wash,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,60 gm,,,,,,55,,,continue,manual,55,55,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,55,TRUE,TRUE,Default,,,,,,,
+,,saundarya-face-wash-60-g,Saundarya Face Wash 60 G,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,60 gm,,,,,,56,,,continue,manual,56,56,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,56,TRUE,TRUE,Default,,,,,,,
+,,patanjali-saundarya-neem--tulsi-face-wash,Patanjali Saundarya Neem- Tulsi Face Wash ,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,60 gm,,,,,,57,,,continue,manual,57,57,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,57,TRUE,TRUE,Default,,,,,,,
+,,patanjali-saundarya-neem--tulsi-face-wash-,Patanjali Saundarya Neem- Tulsi Face Wash-,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,100 gm,,,,,,58,,,continue,manual,58,58,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,58,TRUE,TRUE,Default,,,,,,,
+,,patanjali-saundarya-face-wash,Patanjali Saundarya Face Wash ,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,100 gm,,,,,,59,,,continue,manual,59,59,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,59,TRUE,TRUE,Default,,,,,,,
+,,patanjali-men's-beard-entice-face-wash,Patanjali Men'S Beard Entice Face Wash,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,100 gm,,,,,,60,,,continue,manual,60,60,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,60,TRUE,TRUE,Default,,,,,,,
+,,patanjali-men's-engery-active-face-wash,Patanjali Men'S Engery Active Face Wash,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,100 gm,,,,,,61,,,continue,manual,61,61,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,61,TRUE,TRUE,Default,,,,,,,
+,,patanjali-men's-charcoal-active-face-wash,Patanjali Men'S Charcoal Active Face Wash,,,Patanjali,,"face-wash, best-selling",TRUE,,,Size,100 gm,,,,,,62,,,continue,manual,62,62,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,62,TRUE,TRUE,Default,,,,,,,
+,,patanjali-saundarya-face-scrub-multani-mitti,Patanjali Saundarya Face Scrub ( Multani Mitti ),,,Patanjali,,face-scrub,TRUE,,,Size,60 gm,,,,,,63,,,continue,manual,63,63,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,63,TRUE,TRUE,Default,,,,,,,
+,,herbal-facial-foam-60-gm,Herbal Facial Foam 60 Gm,,,Patanjali,,facial-foam,TRUE,,,Size,60 gm,,,,,,64,,,continue,manual,64,64,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,64,TRUE,TRUE,Default,,,,,,,
+,,patanjali-saundarya-aloe-vera-gel,Patanjali Saundarya Aloe Vera Gel ,,,Patanjali,,"gel, best-selling",TRUE,,,Size,60 ml,,,,,,65,,,continue,manual,65,65,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,65,TRUE,TRUE,Default,,,,,,,
+,,saundarya-aloevera-gel-k.chandan-60-ml,Saundarya Aloevera Gel K.Chandan 60 Ml,,,Patanjali,,"gel, best-selling",TRUE,,,Size,60 ml,,,,,,66,,,continue,manual,66,66,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,66,TRUE,TRUE,Default,,,,,,,
+,,patanjali-saundarya-shower-gel,Patanjali Saundarya Shower Gel,,,Patanjali,,gel,TRUE,,,Size,250 ml,,,,,,67,,,continue,manual,67,67,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,67,TRUE,TRUE,Default,,,,,,,
+,,patanjali-saundarya-aloe-vera-gel-kesar-chandan,Patanjali Saundarya Aloe Vera Gel ( Kesar Chandan ),,,Patanjali,,"gel, best-selling",TRUE,,,Size,150 ml,,,,,,68,,,continue,manual,68,68,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,68,TRUE,TRUE,Default,,,,,,,
+,,patanjali-aloevera-gel,Patanjali Aloevera Gel,,,Patanjali,,"gel, best-selling",TRUE,,,Size,150 ml,,,,,,69,,,continue,manual,69,69,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,69,TRUE,TRUE,Default,,,,,,,
+,,patanjali-body-lotion,Patanjali Body Lotion,,,Patanjali,,bodylotion,TRUE,,,Size,100 ml,,,,,,70,,,continue,manual,70,70,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,70,TRUE,TRUE,Default,,,,,,,
+,,saundarya-body-lotion---200-ml,Saundarya Body Lotion - 200 Ml,,,Patanjali,,bodylotion,TRUE,,,Size,200 ml,,,,,,71,,,continue,manual,71,71,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,71,TRUE,TRUE,Default,,,,,,,
+,,saundarya-body-lotion---400-ml,Saundarya Body Lotion - 400 Ml,,,Patanjali,,bodylotion,TRUE,,,Size,400 ml,,,,,,72,,,continue,manual,72,72,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,72,TRUE,TRUE,Default,,,,,,,
+,,kesh-k.-herbal-mehandi-burgundy-15gm-t,Kesh K. Herbal Mehandi (Burgundy) 15Gm-T,," About this item
+
+Patanjali Herbal Mehandi (Henna) is made from goodness of 11 herbs
+It naturally conditions and colors the hair
+As a conditioner, it strengthens the hair and reduces dandruff
+It improves hair growth, reduces hair fall and provides cooling to scalp
+Patanjali herbal Mehandi is a product of Ayurvedic herbals like neem, amla, methi seeds
+It removes dandruff and enhances the beauty, strength of the hair
+
+Product description
+
+Naturally condition and colour your hair to reveal its innate beauty with Patanjali Herbal Mehandi. This henna pack is enhanced with 11 herbs and enriches the hair, reduces dandruff and strengthens roots. With regular use, the pre-wash conditioner improves hair growth, softens and straightens hair and reduces hair fall. An Ayurvedic product, the cooling herbal conditioner is rich in the extracts of neem, amla and methi seeds. Mehandi�s ability to improve the texture and colour of hair has made it a conditioner of choice for centuries in India. Patanjali Herbal Mehandi stirs in the additional benefits of Ayurveda�s secrets to the mehandi recipe that has traditionally been handed from one generation to the next and gives you hair that is lustrous and dazzles with its natural silkiness. Use once a week or as often required.
+",Patanjali,,mehandi,TRUE,,,Size,15 gms,,,,,,73,,,continue,manual,73,73,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,73,TRUE,TRUE,Default,,,,,,,
+,,kesh-kanti-herbal-mehandi-nat.-black-t,Kesh Kanti Herbal Mehandi (Nat. Black)-T,," About this item
+
+Patanjali Herbal Mehandi (Henna) is made from goodness of 11 herbs
+It naturally conditions and colors the hair
+As a conditioner, it strengthens the hair and reduces dandruff
+It improves hair growth, reduces hair fall and provides cooling to scalp
+Patanjali herbal Mehandi is a product of Ayurvedic herbals like neem, amla, methi seeds
+It removes dandruff and enhances the beauty, strength of the hair
+
+Product description
+
+Naturally condition and colour your hair to reveal its innate beauty with Patanjali Herbal Mehandi. This henna pack is enhanced with 11 herbs and enriches the hair, reduces dandruff and strengthens roots. With regular use, the pre-wash conditioner improves hair growth, softens and straightens hair and reduces hair fall. An Ayurvedic product, the cooling herbal conditioner is rich in the extracts of neem, amla and methi seeds. Mehandi�s ability to improve the texture and colour of hair has made it a conditioner of choice for centuries in India. Patanjali Herbal Mehandi stirs in the additional benefits of Ayurveda�s secrets to the mehandi recipe that has traditionally been handed from one generation to the next and gives you hair that is lustrous and dazzles with its natural silkiness. Use once a week or as often required.
+",Patanjali,,mehandi,TRUE,,,Size,20 gm,,,,,,74,,,continue,manual,74,74,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,74,TRUE,TRUE,Default,,,,,,,
+,,kesh-kanti-herbal-mehandi-dark-brown-t,Kesh Kanti Herbal Mehandi (Dark Brown)-T,," About this item
+
+Patanjali Herbal Mehandi (Henna) is made from goodness of 11 herbs
+It naturally conditions and colors the hair
+As a conditioner, it strengthens the hair and reduces dandruff
+It improves hair growth, reduces hair fall and provides cooling to scalp
+Patanjali herbal Mehandi is a product of Ayurvedic herbals like neem, amla, methi seeds
+It removes dandruff and enhances the beauty, strength of the hair
+
+Product description
+
+Naturally condition and colour your hair to reveal its innate beauty with Patanjali Herbal Mehandi. This henna pack is enhanced with 11 herbs and enriches the hair, reduces dandruff and strengthens roots. With regular use, the pre-wash conditioner improves hair growth, softens and straightens hair and reduces hair fall. An Ayurvedic product, the cooling herbal conditioner is rich in the extracts of neem, amla and methi seeds. Mehandi�s ability to improve the texture and colour of hair has made it a conditioner of choice for centuries in India. Patanjali Herbal Mehandi stirs in the additional benefits of Ayurveda�s secrets to the mehandi recipe that has traditionally been handed from one generation to the next and gives you hair that is lustrous and dazzles with its natural silkiness. Use once a week or as often required.
+",Patanjali,,mehandi,TRUE,,,Size,20 gm,,,,,,75,,,continue,manual,75,75,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,75,TRUE,TRUE,Default,,,,,,,
+,,kesh-kanti-herbal-mehandi-nat.-brown-t,Kesh Kanti Herbal Mehandi (Nat. Brown) T,," About this item
+
+Patanjali Herbal Mehandi (Henna) is made from goodness of 11 herbs
+It naturally conditions and colors the hair
+As a conditioner, it strengthens the hair and reduces dandruff
+It improves hair growth, reduces hair fall and provides cooling to scalp
+Patanjali herbal Mehandi is a product of Ayurvedic herbals like neem, amla, methi seeds
+It removes dandruff and enhances the beauty, strength of the hair
+
+Product description
+
+Naturally condition and colour your hair to reveal its innate beauty with Patanjali Herbal Mehandi. This henna pack is enhanced with 11 herbs and enriches the hair, reduces dandruff and strengthens roots. With regular use, the pre-wash conditioner improves hair growth, softens and straightens hair and reduces hair fall. An Ayurvedic product, the cooling herbal conditioner is rich in the extracts of neem, amla and methi seeds. Mehandi�s ability to improve the texture and colour of hair has made it a conditioner of choice for centuries in India. Patanjali Herbal Mehandi stirs in the additional benefits of Ayurveda�s secrets to the mehandi recipe that has traditionally been handed from one generation to the next and gives you hair that is lustrous and dazzles with its natural silkiness. Use once a week or as often required.
+",Patanjali,,mehandi,TRUE,,,Size,20 gm,,,,,,76,,,continue,manual,76,76,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,76,TRUE,TRUE,Default,,,,,,,
+,,kesh-kanti-herbal-mehandi-burgundy---t,Kesh Kanti Herbal Mehandi (Burgundy) - T,," About this item
+
+Patanjali Herbal Mehandi (Henna) is made from goodness of 11 herbs
+It naturally conditions and colors the hair
+As a conditioner, it strengthens the hair and reduces dandruff
+It improves hair growth, reduces hair fall and provides cooling to scalp
+Patanjali herbal Mehandi is a product of Ayurvedic herbals like neem, amla, methi seeds
+It removes dandruff and enhances the beauty, strength of the hair
+
+Product description
+
+Naturally condition and colour your hair to reveal its innate beauty with Patanjali Herbal Mehandi. This henna pack is enhanced with 11 herbs and enriches the hair, reduces dandruff and strengthens roots. With regular use, the pre-wash conditioner improves hair growth, softens and straightens hair and reduces hair fall. An Ayurvedic product, the cooling herbal conditioner is rich in the extracts of neem, amla and methi seeds. Mehandi�s ability to improve the texture and colour of hair has made it a conditioner of choice for centuries in India. Patanjali Herbal Mehandi stirs in the additional benefits of Ayurveda�s secrets to the mehandi recipe that has traditionally been handed from one generation to the next and gives you hair that is lustrous and dazzles with its natural silkiness. Use once a week or as often required.
+",Patanjali,,mehandi,TRUE,,,Size,20 gm,,,,,,77,,,continue,manual,77,77,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,77,TRUE,TRUE,Default,,,,,,,
+,,k.k.-color-dark-brown-cream-&-dev-t,K.K. Color Dark Brown (Cream & Dev)-T,," About this item
+
+Patanjali Herbal Mehandi (Henna) is made from goodness of 11 herbs
+It naturally conditions and colors the hair
+As a conditioner, it strengthens the hair and reduces dandruff
+It improves hair growth, reduces hair fall and provides cooling to scalp
+Patanjali herbal Mehandi is a product of Ayurvedic herbals like neem, amla, methi seeds
+It removes dandruff and enhances the beauty, strength of the hair
+
+Product description
+
+Naturally condition and colour your hair to reveal its innate beauty with Patanjali Herbal Mehandi. This henna pack is enhanced with 11 herbs and enriches the hair, reduces dandruff and strengthens roots. With regular use, the pre-wash conditioner improves hair growth, softens and straightens hair and reduces hair fall. An Ayurvedic product, the cooling herbal conditioner is rich in the extracts of neem, amla and methi seeds. Mehandi�s ability to improve the texture and colour of hair has made it a conditioner of choice for centuries in India. Patanjali Herbal Mehandi stirs in the additional benefits of Ayurveda�s secrets to the mehandi recipe that has traditionally been handed from one generation to the next and gives you hair that is lustrous and dazzles with its natural silkiness. Use once a week or as often required.
+",Patanjali,,mehandi,TRUE,,,Size,40 gm,,,,,,78,,,continue,manual,78,78,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,78,TRUE,TRUE,Default,,,,,,,
+,,k.k.-color-natural-black-cream-&-dev-t,K.K. Color Natural Black (Cream & Dev)-T,," About this item
+
+Patanjali Herbal Mehandi (Henna) is made from goodness of 11 herbs
+It naturally conditions and colors the hair
+As a conditioner, it strengthens the hair and reduces dandruff
+It improves hair growth, reduces hair fall and provides cooling to scalp
+Patanjali herbal Mehandi is a product of Ayurvedic herbals like neem, amla, methi seeds
+It removes dandruff and enhances the beauty, strength of the hair
+
+Product description
+
+Naturally condition and colour your hair to reveal its innate beauty with Patanjali Herbal Mehandi. This henna pack is enhanced with 11 herbs and enriches the hair, reduces dandruff and strengthens roots. With regular use, the pre-wash conditioner improves hair growth, softens and straightens hair and reduces hair fall. An Ayurvedic product, the cooling herbal conditioner is rich in the extracts of neem, amla and methi seeds. Mehandi�s ability to improve the texture and colour of hair has made it a conditioner of choice for centuries in India. Patanjali Herbal Mehandi stirs in the additional benefits of Ayurveda�s secrets to the mehandi recipe that has traditionally been handed from one generation to the next and gives you hair that is lustrous and dazzles with its natural silkiness. Use once a week or as often required.
+",Patanjali,,mehandi,TRUE,,,Size,40 gm,,,,,,79,,,continue,manual,79,79,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,79,TRUE,TRUE,Default,,,,,,,
+,,herbal-mehandi,Herbal Mehandi,," About this item
+
+Patanjali Herbal Mehandi (Henna) is made from goodness of 11 herbs
+It naturally conditions and colors the hair
+As a conditioner, it strengthens the hair and reduces dandruff
+It improves hair growth, reduces hair fall and provides cooling to scalp
+Patanjali herbal Mehandi is a product of Ayurvedic herbals like neem, amla, methi seeds
+It removes dandruff and enhances the beauty, strength of the hair
+
+Product description
+
+Naturally condition and colour your hair to reveal its innate beauty with Patanjali Herbal Mehandi. This henna pack is enhanced with 11 herbs and enriches the hair, reduces dandruff and strengthens roots. With regular use, the pre-wash conditioner improves hair growth, softens and straightens hair and reduces hair fall. An Ayurvedic product, the cooling herbal conditioner is rich in the extracts of neem, amla and methi seeds. Mehandi�s ability to improve the texture and colour of hair has made it a conditioner of choice for centuries in India. Patanjali Herbal Mehandi stirs in the additional benefits of Ayurveda�s secrets to the mehandi recipe that has traditionally been handed from one generation to the next and gives you hair that is lustrous and dazzles with its natural silkiness. Use once a week or as often required.
+",Patanjali,,mehandi,TRUE,,,Size,100 gm,,,,,,80,,,continue,manual,80,80,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,80,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-hair-cleanser-anti-dandruff-,Patanjali Kesh Kanti Hair Cleanser (Anti-Dandruff)-,,"About this item
+
+Patanjali Kesh Kanti Hair Cleanser Shampoo - Anti-Dandruff
+Suitable Hair Colour All Hair Colors
+Active Ingredients Eucalyptus
+
+",Patanjali,,"shampoo, best-selling",TRUE,,,Size,200 ml,,,,,,81,,,continue,manual,81,81,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,81,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-shikakai-hair-cleanser,Patanjali Kesh Kanti Shikakai Hair Cleanser,https://www.amazon.in/dp/B00XJOUVEE," About this item
+
+Kesh Kanti Shikakai removes dryness and softens rough hair with natural herbs
+Cleanse the hair and scalp of oiliness, grime and environmental toxins
+Shikakai cleanser works to reduce hair fall
+Improves shine restoring bounce and natural health
+
+Product description
+
+Patanjali kesh kanti shikakai shampoo is a herbal hair shampoo or cleanser. It nourishes the hair and enhances hair glow.
+",Patanjali,,"shampoo, best-selling",TRUE,,,Size,200 ml,,,,,,82,,,continue,manual,82,82,true,TRUE,,https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif,1,,,,,,,,,,,,,,,,,,,lb,,82,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-aloevera-hair-cleanser,Patanjali Kesh Kanti Aloevera Hair Cleanser,https://www.amazon.in/dp/B01D4ZYRTW," About this item
+
+Reduces hair fall
+Improves hair glow
+Suitable For: All Hair Types
+Ingredients: Aloe veera
+ 
+Product description
+
+Patanjali Kesh Kanti Aloe Vera Hair Cleanser is packed with the cleansing and restoring properties of Aloe vera, combined with a variety of nourishing herbs. The extracts of the Aloe plant calm affected scalps and moisturize dry and damaged hair. Tulsi, turmeric, reetha, and amla are natural disinfectants, cleansers and moisturizers that regenerate dehydrated hair and bring limp hair to life. Shikakai softens and brings out the natural radiance of hair stalks, making your hair look healthy and lustrous the natural way. Use as often required to keep hair protected and clean from the weather and environmental damage.
+",Patanjali,,"shampoo, best-selling",TRUE,,,Size,200 ml,,,,,,83,,,continue,manual,83,83,true,TRUE,,https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif,1,,,,,,,,,,,,,,,,,,,lb,,83,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-dandruff-care-shampoo,Patanjali Kesh Kanti Dandruff Care Shampoo,https://www.amazon.in/dp/B00K6856MI,"About this item 
+
+This gives beauty to the hairs, treating dryness and dandruffs
+Bhrigraj, myrtle (mahendi), acadia concinna (shikakai) and emblic myrobalan (aola), give new strength to the hairs. Soap nut (ritha), margosa (neem), Indian valerian (tagar), esculent fiacurtia (bakuchi) and turmeric, fights with the insecticides and are effective disinfectants, particularly in the root of hairs
+Aloe vera, aola and kesh kanti stops hair loss and hair turning grey and keeps up shinning
+Usage: Apply liberally to wet hair and work lather through strands, from scalp to ends. Rinse well with water. 
+
+Product description
+
+Kesh Kanti Anti Dandruff Shampoo gives you a deeply cleansing action that acts on the dirt contained in the scalp and reduces the dandruff to a great extent. It also leaves you with glossy and healthy looking hair thanks to its nourishing properties and elements.
+",Patanjali,,"shampoo, best-selling",TRUE,,,Size,200 ml,,,,,,84,,,continue,manual,84,84,true,TRUE,,https://m.media-amazon.com/images/G/31/apparel/rcxgs/tile._CB483369979_.gif,1,,,,,,,,,,,,,,,,,,,lb,,84,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-lustrous-volume-shampoo,Patanjali Kesh Kanti Lustrous Volume Shampoo,,,Patanjali,,"shampoo, best-selling",TRUE,,,Size,200 ml,,,,,,85,,,continue,manual,85,85,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,85,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-damage-control-shampoo,Patanjali Kesh Kanti Damage Control Shampoo,,,Patanjali,,"shampoo, best-selling",TRUE,,,Size,200 ml,,,,,,86,,,continue,manual,86,86,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,86,TRUE,TRUE,Default,,,,,,,
+,,patanjali-kesh-kanti-almond-hair-oil,Patanjali Kesh Kanti Almond Hair Oil,,,Patanjali,,hair-oil,TRUE,,,Size,100 ml,,,,,,87,,,continue,manual,87,87,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,87,TRUE,TRUE,Default,,,,,,,
+,,Patanjali-kesh-kanti-amla-hair-oil,Patanjali Kesh Kanti Amla Hair Oil,,,Patanjali,,hair-oil,TRUE,,,Size,100 ml,,,,,,88,,,continue,manual,88,88,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,88,TRUE,TRUE,Default,,,,,,,
+,,patanjali-coconut-oil-bottle,Patanjali Coconut Oil ( Bottle ),,,Patanjali,,coconut-oil,TRUE,,,Size,200 ml,,,,,,89,,,continue,manual,89,89,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,89,TRUE,TRUE,Default,,,,,,,
+,,patanjali-coconut-oil-jar,Patanjali Coconut Oil (Jar),,,Patanjali,,coconut-oil,TRUE,,,Size,200 ml,,,,,,90,,,continue,manual,90,90,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,90,TRUE,TRUE,Default,,,,,,,
+,,coconut-oil---500-ml-j,Coconut Oil - 500 Ml (J),,,Patanjali,,coconut-oil,TRUE,,,Size,500 ml,,,,,,91,,,continue,manual,91,91,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,91,TRUE,TRUE,Default,,,,,,,
+,,patanjali-herbal-kajal,Patanjali Herbal Kajal,,,Patanjali,,kajal,TRUE,,,Size,3 gm,,,,,,92,,,continue,manual,92,92,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,92,TRUE,TRUE,Default,,,,,,,
+,,patanjali-dant-kanti-junior-dental-cream,Patanjali Dant Kanti Junior Dental Cream,,,Patanjali,,"toothpaste, best-selling",TRUE,,,Size,100 gm,,,,,,93,,,continue,manual,93,93,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,93,TRUE,TRUE,Default,,,,,,,
+,,patanjali-dant-kanti-natural-power-toothpaste,Patanjali Dant Kanti Natural Power Toothpaste ,,,Patanjali,,"toothpaste, best-selling",TRUE,,,Size,150 gm,,,,,,94,,,continue,manual,94,94,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,94,TRUE,TRUE,Default,,,,,,,
+,,patanjali-dant-kanti-advance-power-toothpaste,Patanjali Dant Kanti Advance Power Toothpaste ,,,Patanjali,,"toothpaste, best-selling",TRUE,,,Size,150 gm,,,,,,95,,,continue,manual,95,95,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,95,TRUE,TRUE,Default,,,,,,,
+,,patanjali-dant-kanti-red-power-toothpaste,Patanjali Dant Kanti Red Power Toothpaste ,,,Patanjali,,"toothpaste, best-selling",TRUE,,,Size,150 gm,,,,,,96,,,continue,manual,96,96,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,96,TRUE,TRUE,Default,,,,,,,
+,,patanjali-dant-kanti-aloe-power-gel-toothpaste,Patanjali Dant Kanti Aloe Power Gel Toothpaste ,,,Patanjali,,"toothpaste, best-selling",TRUE,,,Size,150 gm,,,,,,97,,,continue,manual,97,97,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,97,TRUE,TRUE,Default,,,,,,,
+,,patanjali-dant-kanti-fresh-power-gel-toothpaste,Patanjali Dant Kanti Fresh Power Gel Toothpaste ,,,Patanjali,,"toothpaste, best-selling",TRUE,,,Size,150 gm,,,,,,98,,,continue,manual,98,98,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,98,TRUE,TRUE,Default,,,,,,,
+,,patanjali-dant-kanti-sensitive-gel-toothpaste,Patanjali Dant Kanti Sensitive Gel Toothpaste ,,,Patanjali,,"toothpaste, best-selling",TRUE,,,Size,150 gm,,,,,,99,,,continue,manual,99,99,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,99,TRUE,TRUE,Default,,,,,,,
+,,patanjali-atta-noodles-chatpata,Patanjali Atta Noodles Chatpata,,,Patanjali,,"noodles, best-selling",TRUE,,,Size,240 gm,,,,,,100,,,continue,manual,100,100,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,100,TRUE,TRUE,Default,,,,,,,
+,,patanjali-atta-noodles-classic,Patanjali Atta Noodles Classic,,,Patanjali,,"noodles, best-selling",TRUE,,,Size,240 gm,,,,,,101,,,continue,manual,101,101,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,101,TRUE,TRUE,Default,,,,,,,
+,,jeera-cookies-200g,Jeera Cookies 200G,https://www.patanjaliayurved.net/product/natural-food-products/biscuits-and-cookies/patanjali-jeera-cookies/1569,"Patanjali Jeera Cookies are made from the cumin/jeera seeds. Patanjali Jeera Cookies very crunchy and it is not only a tasty snack, but they are very good for your digestion and health. It can be taken as a tasty snack for your tea time.
+
+Benefits
+Good for your digestion and health.
+0% Maida.
+More fiber. 
+Easy to digest.
+
+Ingredients
+Wheat flour(Atta-48.09%), 
+Hydrogenated vegetable Oils (Bakery shortening{Palm oil, Palm Kernel oil, Till oil)},
+Sugar,
+Milk,
+Solids, 
+Liquid Glucose, 
+Invert sugar syrup,
+Cumin seed (0.73 %), 
+Iodized salt, 
+Nature identical flavouring substances,
+Raising agents [INS 500(ii), INS 503(ii)], 
+Emulsifier (INS 322 (i)), 
+Acidity regulator (INS 330)
+
+How to use
+Ready to serve.
+
+Other Product Info
+Best before-6 months from manufacturing date.
+
+",Patanjali,,biscuit,TRUE,,,Size,200 gm,,,,,,102,,,continue,manual,102,102,true,TRUE,,https://www.patanjaliayurved.net/assets/product_images/400x500/1665823259400x500.jpg,1,,,,,,,,,,,,,,,,,,,lb,,102,TRUE,TRUE,Default,,,,,,,
+,,nariyal-cookies-200-gm,Nariyal Cookies 200 Gm ,https://www.patanjaliayurved.net/product/natural-food-products/biscuits-and-cookies/patanjali-nariyal-cookies/3266,"Patanjali nariyal cookies are made from the nariyal or coconut. It is very crunchy and tasty. Patanjali nariyal cookies are very good for your digestion and health. It can be taken as a tasty snack for your tea time.
+
+
+Benefits
+Ready to eat.
+Crunchy and tasty.
+Healthy.
+
+Ingredients
+Wheat Flour (Atta- 48.09%),
+Sugar, 
+Hydrogenated vegetable oil {Bakery shortening (Palm oil, Palm kernel oil, sesame oil)},
+Edible Vegetable oil (Palm, Till), 
+Invert Sugar Syrup, 
+Coconut Powder (6.41%), 
+Milk solids,
+Iodized Salt, 
+Nature identical & artificial flavouring substances (Coconut & vanilla),
+Acidity regulator(INS) 330)
+
+How to use
+Ready to serve.
+
+Other Product Info
+Best before-6 months from manufacturing date.
+",Patanjali,,biscuit,TRUE,,,Size,200 gm,,,,,,103,,,continue,manual,103,103,true,TRUE,,https://www.patanjaliayurved.net/assets/product_images/400x500/1665824241400x500.jpg,1,,,,,,,,,,,,,,,,,,,lb,,103,TRUE,TRUE,Default,,,,,,,
+,,digestive-biscuit-250-gm,Digestive Biscuit 250 Gm ,https://www.amazon.in/dp/B01I3C08X0,"Speciality 	Suitable for vegetarians
+This is a Vegetarian product.
+
+About this item
+
+    National brand
+    Used finest quality ingredients
+    Country of Origin: India
+
+Important information
+Ingredients:
+
+Whole wheat flour,. Edible vegetable oil,. Clarified butter,. Sugar,. Fructo,. Oligosaccharide,. Wheat bran,. Oats,. Multi-grains (water caltrop, gram, amaranth, soya, millet, maize),. Malt product,. Milk solids,. Corn flour,. Salt,. Raising agents.
+
+Legal Disclaimer:
+
+Actual product packaging and materials may contain more and different information than what is shown on our app or website. We recommend that you do not rely solely on the information presented here and that you always read labels, warnings, and directions before using or consuming a product.
+
+Product description
+
+Patanjali digestive cookies will keep your health in check and will improve your metabolism digestive biscuits are frequently eaten with tea or coffee. Sometimes, the biscuit is dunked into the tea and eaten quickly due to the biscuit's tendency to disintegrate when wet. A digestive biscuit is in fact one on the top 10 biscuits for dunking in tea.
+",Patanjali,,biscuit,TRUE,,,Size,250 gm,,,,,,104,,,continue,manual,104,104,true,TRUE,,https://m.media-amazon.com/images/I/91e7J+-KtoL._SL1500_.jpg,1,,,,,,,,,,,,,,,,,,,lb,,104,TRUE,TRUE,Default,,,,,,,
+,,cashew-cookies-200-gm,Cashew Cookies 200 Gm ,https://www.patanjaliayurved.net/product/natural-food-products/biscuits-and-cookies/patanjali-cashew-cookies/1009,"Patanjali cashew cookies are made from cow's milk butter and 100% whole wheat atta which is full of fiber and easy to digest. It can be devoured anytime as it has zero percent Maida and trans fat which makes it healthy and nutritious, and cashews improve strength, weight & bone mass. 
+
+
+Benefits
+Made with 0% maida, cholesterol & artificial colors.
+More fiber.
+Easy to digest.
+
+
+Ingredients
+Whole wheat flour, 
+Edible vegetable oil (palm), 
+Sugar, 
+Cashew (3.2%),
+Butter (2.8%), 
+Sugar syrup, 
+Milk solids, 
+Raising agents [INS 503(ii), INS 500(ii), 
+Edible common salt, 
+Emulsifiers (INS 322, INS 471, INS 472E),
+Dough conditioner (INS 341, INS 223)
+
+How to use
+Ready to serve.
+
+Other Product Info
+Best before-6 months from manufacturing date.
+
+
+",Patanjali,,biscuit,TRUE,,,Size,200 gm,,,,,,105,,,continue,manual,105,105,true,TRUE,,https://www.patanjaliayurved.net/assets/product_images/400x500/1665825998400x500.jpg,1,,,,,,,,,,,,,,,,,,,lb,,105,TRUE,TRUE,Default,,,,,,,
+,,digestive-biscuit-250-gm,,,,,,,,,,,,,,,,,,,,,,,,,,,https://m.media-amazon.com/images/I/91TAWSOsUbL._SL1500_.jpg,2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,digestive-biscuit-250-gm,,,,,,,,,,,,,,,,,,,,,,,,,,,https://m.media-amazon.com/images/I/41T6nnMqIHL.jpg,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,digestive-biscuit-250-gm,,,,,,,,,,,,,,,,,,,,,,,,,,,https://m.media-amazon.com/images/I/A120CCQGlSL._SL1500_.jpg,4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,digestive-biscuit-250-gm,,,,,,,,,,,,,,,,,,,,,,,,,,,https://m.media-amazon.com/images/I/A1O1AVfIu9L._SL1500_.jpg,5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,marie-biscuit-240-gm,Marie Biscuit 240 Gm ,https://www.patanjaliayurved.net/product/natural-food-products/biscuits-and-cookies/patanjali-marie-biscuits/3911,"
+
+Patanjali Marie Biscuit is crisp and light biscuit made with 100% whole wheat atta. It is packed with the goodness of vitamins and minerals and has 0% maida, trans fat and cholesterol.
+
+Benefits
+0% Maida, cholesterol.
+Rich in dietary fiber.
+No artificial color.
+Easy to digest. 
+Healthy biscuits.
+
+Ingredients
+Wheat flour (Atta 65.5%),
+Sugar,
+Refined vegetable oil (Palm oil),
+Malt extract,
+Raising agent [INS 500 (ii), INS 503 (ii)],
+Barley flour,
+Invert syrup,
+Liquid glucose,
+Milk solids,
+Honey,
+Edible common salt,
+Clarified butter,
+Dough conditioner (INS 223),
+Antioxidant (INS 319),
+
+How to use
+Ready to serve.
+
+Other Product Info
+Best before-6 months from manufacturing date.
+
+
+",Patanjali,,biscuit,TRUE,,,Size,240 gm,,,,,,106,,,continue,manual,106,106,true,TRUE,,https://www.patanjaliayurved.net/assets/product_images/400x500/1659434889400x500.jpg,1,,,,,,,,,,,,,,,,,,,lb,,106,TRUE,TRUE,Default,,,,,,,
+,,milk-biscuit-300-gm,Milk Biscuit 300 Gm ,https://www.patanjaliayurved.net/product/natural-food-products/biscuits-and-cookies/patanjali-doodh-biscuits/1185,"Take a well-deserved break with wholesome Patanjali Doodh Biscuits. Enhanced with fibre, the 100% atta biscuits are enriched with cow’s milk. Simple and delicious, enjoy Patanjali Doodh Biscuits as an energy snack, or with tea and coffee. Cholesterol free.  Zero trans fats. Get the goodness of milk and wheat with every bite.
+
+Benefits
+Enriched with cow’s milk.
+Contains fibre.
+Cholesterol free.
+No artificial colors or flavors.
+
+Ingredients
+Whole wheat flour (Atta),
+Edible vegetable oil (Palm),
+Sugar,
+Milk solids (4%),
+Edible common salt,
+Liquid glucose,
+Salt,
+Leavening agent [INS 503(ii), INS- 341(i)],
+Cheese,
+Dough conditioner (INS-223(ii), INS-319(i)],
+Antioxidants (INS 319),
+Emulsifier
+",Patanjali,,biscuit,TRUE,,,Size,300 gm,,,,,,107,,,continue,manual,107,107,true,TRUE,,https://www.patanjaliayurved.net/assets/product_images/400x500/1538388199doodhbiscuit400-500.png,1,,,,,,,,,,,,,,,,,,,lb,,107,TRUE,TRUE,Default,,,,,,,
+,,patanjali-chyawanprash-plus-herbal-jam,Patanjali Chyawanprash Plus ( Herbal Jam ),https://www.amazon.com/dp/B01HT98O1Q," About this item
+
+    DELICIOUS SPREADABLE JAM: Patanjali Chyavanprash jam is a herbal cooked mixture and has been eaten for health, digestion, stress and energy in India for generations. Now enjoy the same historical goodness in your home. It tastes sweet and sour at the same time.
+    HERBAL MIXTURE FOR ALL AGES - Patanjali Chyavanprash jam is an everyday restorative of health promoting strong body and bright mind in children and adults.
+    TASTY AND HEALTHY - it has a tangy sweet-sour taste and the consistency of jam so it is delicious on toast, bread spread, mixed into warm milk, or even eaten by the spoonful directly.
+    CHYAVANPRASH is a delicious Ayurvedic herbal jam that is prepared in a base of fresh amalaki (amla) fruit, a natural source of antioxidants. This nutritious jam removes physical & mental weakness caused by any reason and strengthens immune system.
+    QUALITY CONTROL - All our products are carefully packaged under the most hygienic conditions according to international quality standard.
+
+
+Product Description
+
+Patanjali Chyawanprash has come into Ayurveda through the tradition of the Indian. Patanjali Chyawanprash is the best herbal formulation & not just meant for sick people but is excellent for healthy people too. Chyawanprash is a time-tested Ayurvedic formulation of more than 41 Ayurvedic herbs that aid in boosting the immune system.
+
+",Patanjali,,"chyawanprash, best-selling",TRUE,,,Size,500 gm,,,,,,108,,,continue,manual,108,108,true,TRUE,,https://m.media-amazon.com/images/I/71tWd6IgTsL._SL1500_.jpg,1,,,,,,,,,,,,,,,,,,,lb,,108,TRUE,TRUE,Default,,,,,,,
+,,patanjali-chyawanprash-plus-herbal-jam,,,,,,,,,,Size,1 kg,,,,,,109,,,continue,manual,109,109,true,TRUE,,https://m.media-amazon.com/images/I/81RLBNmTOlL._SL1500_.jpg,2,,,,,,,,,,,,,,,,,,,lb,,109,TRUE,TRUE,Default,,,,,,,
+,,patanjali-chyawanprash-plus-herbal-jam,,,,,,,,,,,,,,,,,,,,,,,,,,,https://m.media-amazon.com/images/I/91DSAJsVX4L._SL1500_.jpg,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,patanjali-chyawanprash-plus-herbal-jam,,,,,,,,,,,,,,,,,,,,,,,,,,,https://m.media-amazon.com/images/I/31eCGh9osRL.jpg,4,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,patanjali-chyawanprash-plus-herbal-jam,,,,,,,,,,,,,,,,,,,,,,,,,,,https://m.media-amazon.com/images/I/A16exY5Wz5L._SL1500_.jpg,5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,patanjali-chyawanprabha-advanced-no-added-sugar,Patanjali Chyawanprabha Advanced ( No Added Sugar ),https://www.walmart.com/ip/Patanjali-Chyawanprabha-Advanced-No-Added-Sugar-750-Gm-26-45-Oz/550429096,"Ingredients
+
+Amla: Neem: Pippali: Brahmi: Saffron: White sandalwood: Ashwagandha: Tulsi",Patanjali,,"chyawanprash, best-selling",TRUE,,,Size,750 gm,,,,,,110,,,continue,manual,110,110,true,TRUE,,https://i5.walmartimages.com/asr/0a531a11-66e1-45e8-842b-7d59d38def69.a772775153c49722614391e21ff5501d.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF,1,,,,,,,,,,,,,,,,,,,lb,,110,TRUE,TRUE,Default,,,,,,,
+,,chyavanprash-jaggery-gur-750-gm,Chyavanprash Jaggery (Gur) 750 Gm,https://patanjalibareilly.com/index.php/product/chyavanprash-jaggery-gur-750-gm/,CHYAVANPRASH JAGGERY (GUR) 750 GM,Patanjali,,"chyawanprash, best-selling",TRUE,,,Size,750 gm,,,,,,111,,,continue,manual,111,111,true,TRUE,,https://patanjalibareilly.com/wp-content/uploads/2022/01/Untitled-design-10.png,1,,,,,,,,,,,,,,,,,,,lb,,111,TRUE,TRUE,Default,,,,,,,
+,,patanjali-cow-ghee,Patanjali Cow Ghee ,,,Patanjali,,"ghee, best-selling",TRUE,,,Size,200 ML,,,,,,112,,,continue,manual,112,112,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,112,TRUE,TRUE,Default,,,,,,,
+,,patanjali-cow-ghee-[clarified-butter]-,Patanjali Cow Ghee [Clarified Butter]-,,,Patanjali,,"ghee, best-selling",TRUE,,,Size,500 ML/ 452 gm,,,,,,113,,,continue,manual,113,113,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,113,TRUE,TRUE,Default,,,,,,,
+,,patanjali-cow-ghee-[clarified-butter],Patanjali Cow Ghee [Clarified Butter],,,Patanjali,,"ghee, best-selling",TRUE,,,Size,1 ltr/905 gm,,,,,,114,,,continue,manual,114,114,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,114,TRUE,TRUE,Default,,,,,,,
+,,patanjali-honey--250-g,Patanjali Honey- 250 G,,,Patanjali,,"honey, best-selling",TRUE,,,Size,250 gm,,,,,,115,,,continue,manual,115,115,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,115,TRUE,TRUE,Default,,,,,,,
+,,patanjali-honey--500-g,Patanjali Honey- 500 G,,,Patanjali,,"honey, best-selling",TRUE,,,Size,500 gm,,,,,,116,,,continue,manual,116,116,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,116,TRUE,TRUE,Default,,,,,,,
+,,patanjali-mustard-oil-[-for-external-use-only-],Patanjali Mustard Oil [ For External Use Only ],,,Patanjali,,"food-oil, best-selling",TRUE,,,Size,1 ltr,,,,,,117,,,continue,manual,117,117,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,117,TRUE,TRUE,Default,,,,,,,
+,,patanjali-amla-murabba,Patanjali Amla Murabba,,,Patanjali,,"murabba, best-selling",TRUE,,,Size,500 gm,,,,,,118,,,continue,manual,118,118,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,118,TRUE,TRUE,Default,,,,,,,
+,,coriander-powder-500-gm,Coriander Powder 500 Gm,,,Patanjali,,spices,TRUE,,,Size,500 gm,,,,,,119,,,continue,manual,119,119,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,119,TRUE,TRUE,Default,,,,,,,
+,,patanjali-black-pepper-whole,Patanjali Black Pepper Whole,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,120,,,continue,manual,120,120,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,120,TRUE,TRUE,Default,,,,,,,
+,,patanjali-subzi-masala,Patanjali Subzi Masala,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,121,,,continue,manual,121,121,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,121,TRUE,TRUE,Default,,,,,,,
+,,patanjali-black-pepper-powder,Patanjali Black Pepper Powder,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,122,,,continue,manual,122,122,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,122,TRUE,TRUE,Default,,,,,,,
+,,patanjali-chaat-masala,Patanjali Chaat  Masala,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,123,,,continue,manual,123,123,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,123,TRUE,TRUE,Default,,,,,,,
+,,patanjali-turmeric-powder,Patanjali Turmeric Powder,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,124,,,continue,manual,124,124,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,124,TRUE,TRUE,Default,,,,,,,
+,,patanjali-chhole-masala,Patanjali Chhole  Masala,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,125,,,continue,manual,125,125,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,125,TRUE,TRUE,Default,,,,,,,
+,,patanjali-coriander-powder,Patanjali Coriander Powder ,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,126,,,continue,manual,126,126,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,126,TRUE,TRUE,Default,,,,,,,
+,,patanjali-garam-masala,Patanjali Garam Masala,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,127,,,continue,manual,127,127,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,127,TRUE,TRUE,Default,,,,,,,
+,,patanjali-cumin-whole,Patanjali Cumin Whole ,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,128,,,continue,manual,128,128,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,128,TRUE,TRUE,Default,,,,,,,
+,,patanjali-carom-whole,Patanjali Carom Whole,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,129,,,continue,manual,129,129,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,129,TRUE,TRUE,Default,,,,,,,
+,,patanjali-fenugreek-whole,Patanjali Fenugreek Whole ,,,Patanjali,,spices,TRUE,,,Size,100 gm,,,,,,130,,,continue,manual,130,130,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,130,TRUE,TRUE,Default,,,,,,,
+,,patanjali-red-chilli-powder,Patanjali Red Chilli Powder,,,Patanjali,,spices,TRUE,,,Size,200 gm,,,,,,131,,,continue,manual,131,131,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,131,TRUE,TRUE,Default,,,,,,,
+,,patanjali-turmeric-powder,Patanjali Turmeric Powder,,,Patanjali,,spices,TRUE,,,Size,200 gm,,,,,,132,,,continue,manual,132,132,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,132,TRUE,TRUE,Default,,,,,,,
+,,patanjali-pachak-ajwain-with-aloe-vera,Patanjali Pachak Ajwain ( With Aloe Vera ),,,Patanjali,,pachak,TRUE,,,Size,100 gm,,,,,,133,,,continue,manual,133,133,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,133,TRUE,TRUE,Default,,,,,,,
+,,patanjali-pachak-anardana-goli,Patanjali Pachak Anardana Goli,,,Patanjali,,pachak,TRUE,,,Size,100 gm,,,,,,134,,,continue,manual,134,134,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,134,TRUE,TRUE,Default,,,,,,,
+,,patanjali-pachak-hing-goli,Patanjali Pachak Hing Goli,,,Patanjali,,pachak,TRUE,,,Size,100 gm,,,,,,135,,,continue,manual,135,135,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,135,TRUE,TRUE,Default,,,,,,,
+,,patanjali-pachak-hing-peda,Patanjali Pachak Hing Peda,,,Patanjali,,pachak,TRUE,,,Size,100 gm,,,,,,136,,,continue,manual,136,136,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,136,TRUE,TRUE,Default,,,,,,,
+,,patanjali-shodhit-harad-chebulic-myrobalan,Patanjali Shodhit Harad (Chebulic Myrobalan),,,Patanjali,,pachak,TRUE,,,Size,100 gm,,,,,,137,,,continue,manual,137,137,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,137,TRUE,TRUE,Default,,,,,,,
+,,patanjali-gulkand-rose-petal-preserve,Patanjali Gulkand ( Rose Petal Preserve ),,,Patanjali,,"gulkand, best-selling",TRUE,,,Size,500 gm,,,,,,138,,,continue,manual,138,138,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,138,TRUE,TRUE,Default,,,,,,,
+,,patanjali-bel-indian-bael-sharbat,Patanjali Bel (Indian Bael) Sharbat,,,Patanjali,,"sharbat, best-selling",TRUE,,,Size,750 ml,,,,,,139,,,continue,manual,139,139,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,139,TRUE,TRUE,Default,,,,,,,
+,,patanjali-brahmi-sharbat,Patanjali Brahmi Sharbat,,,Patanjali,,"sharbat, best-selling",TRUE,,,Size,750 ml,,,,,,140,,,continue,manual,140,140,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,140,TRUE,TRUE,Default,,,,,,,
+,,patanjali-gulab-sharbat-rose-petal-beverage,Patanjali Gulab Sharbat ( Rose Petal Beverage ),,,Patanjali,,"sharbat, best-selling",TRUE,,,Size,750 ml,,,,,,141,,,continue,manual,141,141,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,141,TRUE,TRUE,Default,,,,,,,
+,,patanjali-khus-sharbat-khus-grass-beverage,Patanjali Khus Sharbat ( Khus Grass Beverage ),,,Patanjali,,"sharbat, best-selling",TRUE,,,Size,750 ml,,,,,,142,,,continue,manual,142,142,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,142,TRUE,TRUE,Default,,,,,,,
+,,patanjali-mango-panna-sharbat,Patanjali Mango Panna Sharbat,,,Patanjali,,"sharbat, best-selling",TRUE,,,Size,750 ml,,,,,,143,,,continue,manual,143,143,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,143,TRUE,TRUE,Default,,,,,,,
+,,patanjali-amla-indian-gooseberry-juice,Patanjali Amla (Indian Gooseberry) Juice,,,Patanjali,,"juice, best-selling",TRUE,,,Size,500 ml,,,,,,144,,,continue,manual,144,144,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,144,TRUE,TRUE,Default,,,,,,,
+,,patanjali-arjun-amla-juice,Patanjali Arjun Amla Juice,,,Patanjali,,"juice, best-selling",TRUE,,,Size,500 ml,,,,,,145,,,continue,manual,145,145,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,145,TRUE,TRUE,Default,,,,,,,
+,,patanjali-giloy-amla-juice,Patanjali Giloy Amla Juice,,,Patanjali,,"juice, best-selling",TRUE,,,Size,500 ml,,,,,,146,,,continue,manual,146,146,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,146,TRUE,TRUE,Default,,,,,,,
+,,patanjali-giloy-juice,Patanjali Giloy Juice ,,,Patanjali,,"juice, best-selling",TRUE,,,Size,500 ml,,,,,,147,,,continue,manual,147,147,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,147,TRUE,TRUE,Default,,,,,,,
+,,patanjali-karela-amla-juice,Patanjali Karela Amla Juice,,,Patanjali,,"juice, best-selling",TRUE,,,Size,500 ml,,,,,,148,,,continue,manual,148,148,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,148,TRUE,TRUE,Default,,,,,,,
+,,patanjali-tulsi-panchang-juice,Patanjali Tulsi Panchang Juice,,,Patanjali,,"juice, best-selling",TRUE,,,Size,500 ml,,,,,,149,,,continue,manual,149,149,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,149,TRUE,TRUE,Default,,,,,,,
+,,patanjali-amla-aloevera-juice-with-wheatgrass,Patanjali Amla-Aloevera Juice With Wheatgrass,,,Patanjali,,"juice, best-selling",TRUE,,,Size,500 ml,,,,,,150,,,continue,manual,150,150,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,150,TRUE,TRUE,Default,,,,,,,
+,,patanjali-dalia-porridge,Patanjali Dalia (Porridge) ,,,Patanjali,,"dalia, best-selling",TRUE,,,Size,500 gm,,,,,,151,,,continue,manual,151,151,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,151,TRUE,TRUE,Default,,,,,,,
+,,dalia-jar,Dalia ( Jar ),,,Patanjali,,"dalia, best-selling",TRUE,,,Size,1 kg,,,,,,152,,,continue,manual,152,152,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,152,TRUE,TRUE,Default,,,,,,,
+,,patanjali-multigrain-dalia-porridge,Patanjali Multigrain Dalia (Porridge),,,Patanjali,,"dalia, best-selling",TRUE,,,Size,500 gm,,,,,,153,,,continue,manual,153,153,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,153,TRUE,TRUE,Default,,,,,,,
+,,patanjali-badam-pak-almond-mix,Patanjali Badam Pak (Almond Mix),,,Patanjali,,badam-pak,TRUE,,,Size,500 gm,,,,,,154,,,continue,manual,154,154,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,154,TRUE,TRUE,Default,,,,,,,
+,,ruchi-soya-chunks-1-kg,Ruchi Soya Chunks-1 Kg,,,Patanjali,,"Soya-chunks, best-selling",TRUE,,,Size,1 kg,,,,,,155,,,continue,manual,155,155,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,155,TRUE,TRUE,Default,,,,,,,
+,,ruchi-soya-chunks-mini--1-kg,Ruchi Soya Chunks ( Mini )-1 Kg,,,Patanjali,,"Soya-chunks, best-selling",TRUE,,,Size,1 kg,,,,,,156,,,continue,manual,156,156,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,156,TRUE,TRUE,Default,,,,,,,
+,,basmati-rice-1-kg-diamond,Basmati Rice 1 Kg (Diamond),,,Patanjali,,"rice, best-selling",TRUE,,,Size,1 kg,,,,,,157,,,continue,manual,157,157,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,157,TRUE,TRUE,Default,,,,,,,
+,,basmati-rice-5-kg-diamond,Basmati Rice 5 Kg (Diamond),,,Patanjali,,"rice, best-selling",TRUE,,,Size,5 kg,,,,,,158,,,continue,manual,158,158,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,158,TRUE,TRUE,Default,,,,,,,
+,,chef-specialty-golden-sella-basmati-rice-5-kg,Chef Specialty Golden Sella Basmati Rice 5 Kg,,,Patanjali,,"rice, best-selling",TRUE,,,Size,5 kg,,,,,,159,,,continue,manual,159,159,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,159,TRUE,TRUE,Default,,,,,,,
+,,chef-sp.-cream-sella-5-kg,Chef  Sp. Cream Sella 5 Kg ,,,Patanjali,,rice,TRUE,,,Size,5 kg,,,,,,160,,,continue,manual,160,160,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,160,TRUE,TRUE,Default,,,,,,,
+,,vermicelli-plain,Vermicelli Plain,,,Patanjali,,vermicelli,TRUE,,,Size,900 gm,,,,,,161,,,continue,manual,161,161,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,161,TRUE,TRUE,Default,,,,,,,
+,,vermicelli-roasted,Vermicelli Roasted,,,Patanjali,,vermicelli,TRUE,,,Size,900 gm,,,,,,162,,,continue,manual,162,162,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,162,TRUE,TRUE,Default,,,,,,,
+,,rava-idli-instant-mix-400-gm--t,Rava Idli Instant Mix 400 Gm -T,,,Patanjali,,idli,TRUE,,,Size,400 gm,,,,,,163,,,continue,manual,163,163,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,163,TRUE,TRUE,Default,,,,,,,
+,,rice-idli-instant-mix-400-gm--t,Rice Idli Instant Mix 400 Gm -T,,,Patanjali,,idli,TRUE,,,Size,400 gm,,,,,,164,,,continue,manual,164,164,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,164,TRUE,TRUE,Default,,,,,,,
+,,dosa-instant-mix-400-gm--t,Dosa Instant Mix 400 Gm -T,,,Patanjali,,idli,TRUE,,,Size,400 gm,,,,,,165,,,continue,manual,165,165,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,165,TRUE,TRUE,Default,,,,,,,
+,,patanali-pink-salt-sendha-namak-500-g,Patanali Pink Salt ( Sendha Namak) 500 g,,,Patanjali,,namak,TRUE,,,Size,500 gm,,,,,,166,,,continue,manual,166,166,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,166,TRUE,TRUE,Default,,,,,,,
+,,patanali-blak-salt-kala-namak-500-g,Patanali Blak Salt ( Kala Namak) 500 g,,,Patanjali,,namak,TRUE,,,Size,500 gm,,,,,,167,,,continue,manual,167,167,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,167,TRUE,TRUE,Default,,,,,,,
+,,divya-badam-rogan-almond-oil,Divya Badam Rogan ( Almond Oil ),,,Patanjali,,medicine-divya-rogan,TRUE,,,Size,60 ml,,,,,,168,,,continue,manual,168,168,true,TRUE,,,,,,,,,,,,,,,,,,,,,,lb,,168,TRUE,TRUE,Default,,,,,,,
