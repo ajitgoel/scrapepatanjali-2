@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 import logging
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from scrapepatanjali.scrapepatanjali.utilities import trim_and_add_hyphens, input_output_folder
+from utilities import trim_and_add_hyphens, input_output_folder
 
 class PatanjaliSpider(scrapy.Spider):
     name = "patanjali"
@@ -46,6 +46,7 @@ class PatanjaliSpider(scrapy.Spider):
                 "https://www.patanjaliayurved.net/category/dried-fruits-nuts/234",
                 "https://www.patanjaliayurved.net/category/breakfast-cereals/243",
                 "https://www.patanjaliayurved.net/category/kwath/5",
+                #packages for diseases
                 "https://www.patanjaliayurved.net/category/vati/16",
                 "https://www.patanjaliayurved.net/category/bhasma/17",
                 "https://www.patanjaliayurved.net/category/churna/18",
@@ -61,12 +62,23 @@ class PatanjaliSpider(scrapy.Spider):
                 "https://www.patanjaliayurved.net/category/balm-inhaler/211",
                 "https://www.patanjaliayurved.net/category/eye-ear-oral-care/248",
                 "https://www.patanjaliayurved.net/category/agarbatti-and-dhoops/7",
+                "https://www.patanjaliayurved.net/category/detergent-powder/33",
+                "https://www.patanjaliayurved.net/category/detergent-cake/34",
+                "https://www.patanjaliayurved.net/category/hand-wash-and-sanitizer/35",
                 "https://www.patanjaliayurved.net/category/hawan-samagri/200",
                 "https://www.patanjaliayurved.net/category/pooja-essentials/220",
                 "https://www.patanjaliayurved.net/category/dishwash-bar-and-gel/221",
+                "https://www.patanjaliayurved.net/category/toothpaste/22",
+                "https://www.patanjaliayurved.net/category/tooth-brush/23",
+                "https://www.patanjaliayurved.net/category/tooth-powder-manjan/147",
+                "https://www.patanjaliayurved.net/category/shampoo/31",
+                "https://www.patanjaliayurved.net/category/hair-oil/32",
+                "https://www.patanjaliayurved.net/category/conditioner/148",
+                "https://www.patanjaliayurved.net/category/hair-gel/219",
                 "https://www.patanjaliayurved.net/category/body-care/25",
                 "https://www.patanjaliayurved.net/category/eye-care/137",
                 "https://www.patanjaliayurved.net/category/shishu-care/207",
+                #Patanjali Publication
                 "https://www.patanjaliayurved.net/category/swadeshi-samridhi-card/224",
                 "https://www.patanjaliayurved.net/category/nutrition/233",
                 "https://www.patanjaliayurved.net/category/nutrition-bar/235",
@@ -77,12 +89,17 @@ class PatanjaliSpider(scrapy.Spider):
                 "https://www.patanjaliayurved.net/category/women-ethnic/242",
                 "https://www.patanjaliayurved.net/category/copperware/245",
                 "https://www.patanjaliayurved.net/category/dairy-frozen-items/247",
+                "https://www.patanjaliayurved.net/category/notebook/256",
+                "https://www.patanjaliayurved.net/category/bio-fertilizers/251",
+                "https://www.patanjaliayurved.net/category/bio-pesticides/252",
+                "https://www.patanjaliayurved.net/category/plant-growth-promoters/253",
+                "https://www.patanjaliayurved.net/category/soil-testing/254",
+                "https://www.patanjaliayurved.net/category/seeds/255",
+
             ]
             for url in urls:
-                #self.logger.info("url: " + url)
                 yield scrapy.Request(url, callback=self.parse_parent)
         except Exception as e:
-            # Log the exception or handle it as needed
             logging.error("An error occurred: %s", str(e))
 
     # def parse_LHS_Menu(self, response):
@@ -94,7 +111,6 @@ class PatanjaliSpider(scrapy.Spider):
         child_urls = response.css(
             "div#gridview>div>article>figure>a.figure-href::attr(href)"
         ).getall()
-        #self.logger.info("child_urls: " + " ".join(child_urls))
         for child_url in child_urls:
             yield scrapy.Request(
                 url=child_url, callback=self.parse_child
@@ -105,17 +121,37 @@ class PatanjaliSpider(scrapy.Spider):
                 "div.block-breadcrumb>ul.breadcrumb>li.active::text"
             ).get()
         heading = response.css("div.product-detail-section>h3::text").get()
-        productInformation = ''.join(response.css("div.product-information>div>p>font::text").getall())
-        benefits = ''.join(response.css("div#collapse1>div>div>font::text").getall())
-        ingredients = ''.join(response.css("div#collapse2>div>div>font::text").getall())
-        howToUse = ''.join(response.css("div#collapse3>div>div>font::text").getall())
-        otherProductInfo = ''.join(response.css("div#collapse4>div.panel-body>font::text").getall())
+        productInformation_parent_div="div.product-information > div > p > "
+        productInformation = ''.join(response.css(productInformation_parent_div + "font::text").getall())
+        if not productInformation:
+            productInformation = "".join(response.css(productInformation_parent_div + "table td").css('::text').extract())
+        benefits_parent_div="div#collapse1 > div > div > "
+        benefits = ''.join(response.css(benefits_parent_div + "font::text").getall())
+        if not benefits:
+            benefits = "".join(response.css(benefits_parent_div + "table td").css('::text').extract())
+        ingredients_parent_div="div#collapse2 > div > div > "
+        ingredients = ''.join(response.css(ingredients_parent_div + "font::text").getall())
+        if not ingredients:
+            ingredients = "".join(response.css(ingredients_parent_div + "table td").css('::text').extract())
+        howToUse_parent_div="div#collapse3 > div > div > "
+        howToUse = ''.join(response.css(howToUse_parent_div + "font::text").getall())
+        if not howToUse:
+            howToUse = "".join(response.css(howToUse_parent_div + "table td").css('::text').extract())
+        otherProductInfo_parent_div="div#collapse4 > div.panel-body > "
+        otherProductInfo = ''.join(response.css(otherProductInfo_parent_div + "font::text").getall())
+        if not otherProductInfo:
+            otherProductInfo = "".join(response.css(otherProductInfo_parent_div + "table td").css('::text').extract())
         variants = ", ".join(response.css(
                 "div.col-md-5.col-sm-4.details-custom>div>select>option::text"
             ).getall())
         
-        productImage = response.css("#product-main::attr(src)").get()
-        
+        divs_with_images = response.css('div.col-xs-12.col-sm-12.col-md-6.col-lg-6 > div.row > div')
+        if divs_with_images:
+            productImages = [div.css('a > img::attr(src)').get() for div in divs_with_images]
+            productImage = ','.join(productImages)
+        else:
+            productImage = response.css("#product-main::attr(src)").get()
+
         lastbreadcrumb = lastbreadcrumb.strip() if lastbreadcrumb is not None else ""
         heading = heading.strip() if heading is not None else ""
         benefits_string = benefits if benefits is not None else ""
@@ -126,12 +162,10 @@ class PatanjaliSpider(scrapy.Spider):
         productImage = productImage if productImage is not None else ""
         parsed_url = urlparse(response.url)
         path_parts = parsed_url.path.split('/')
-        category = path_parts[2]
+        category = ','.join(path_parts[2:-2])
         data = {
             "url": response.url,
             'Tags': category,
-            #'breadcrumb1': response.css('div.block-breadcrumb>ul.breadcrumb>li:nth-child(2)>a::text').get(),
-            #'breadcrumb2': response.css('div.block-breadcrumb>ul.breadcrumb>li:nth-child(3)>a::text').get(),
             "lastbreadcrumb": lastbreadcrumb,
             "heading": heading,
             "product-information": "<b>Product Information</b>"
@@ -147,9 +181,12 @@ class PatanjaliSpider(scrapy.Spider):
             "variants": variants,
             "product-image": productImage,
         }
-        if productImage != "":
-            yield scrapy.Request(productImage, callback=self.parse_image)
-
+        # if divs_with_images:
+        #     for counter in productImages:
+        #         yield scrapy.Request(counter, callback=self.parse_image)
+        # else:
+        #     yield scrapy.Request(productImage, callback=self.parse_image)
+        
         filepath=os.path.join(input_output_folder(), "patanjali-ayurved-scrape.csv")
         if not os.path.isfile(filepath):
             with open(filepath, "w", newline="", encoding="utf-8") as csvfile:

@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 import logging
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from scrapepatanjali.scrapepatanjali.utilities import trim_and_add_hyphens, input_output_folder
+from utilities import trim_and_add_hyphens, input_output_folder
 
 class ScrapePatanjaliBasedOnAmazonInSpider(scrapy.Spider):
     name = "scrapepatanjalibasedonamazonin"
