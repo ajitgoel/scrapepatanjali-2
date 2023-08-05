@@ -123,12 +123,12 @@ class PatanjaliSpider(scrapy.Spider):
             ).get()
         heading = response.css("div.product-detail-section>h3::text").get()
         product_information_nested_text = response.xpath('//div[@class="product-information"]//div[@class=""]//*[normalize-space()]/text()').extract()
-        product_information=' '.join(text.strip() for text in product_information_nested_text if text.strip())
+        product_information =' '.join(text.strip() for text in product_information_nested_text if text.strip())
         
         other_product_information_nested_text = response.xpath('//div[@id="accordion"]//*[normalize-space()]/text()').extract()
         other_product_information_complete_string=' '.join(text.strip() for text in other_product_information_nested_text if text.strip())
         keywords = ["Benefits ", "Ingredients ", "Other Product Info ", "How to use "]
-        other_product_information = re.sub(f'({"|".join(keywords)})', r'\n\1\n', other_product_information_complete_string)
+        other_product_information = re.sub(f'({"|".join(keywords)})', r'\n<b>\1</b>\n', other_product_information_complete_string)
         
         variants = ", ".join(response.css(
                 "div.col-md-5.col-sm-4.details-custom>div>select>option::text"
@@ -153,8 +153,8 @@ class PatanjaliSpider(scrapy.Spider):
             'Tags': category,
             "lastbreadcrumb": lastbreadcrumb,
             "heading": heading,
-            "cleaned-heading": re.sub(r'\s+\d+(\.\d+)?[a-zA-Z]*\s*x\s+[a-zA-Z]*\s*$', '', heading),
-            "product-information": "<b>Product Information</b>"
+            "cleaned-heading": re.sub(r'\s{3,}.*$', '', heading),
+            "product-information": "<b>Product Information</b>\n"
             + product_information
             + other_product_information,
             "variants": variants,
