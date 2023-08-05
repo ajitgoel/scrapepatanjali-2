@@ -5,6 +5,7 @@ import os
 from urllib.parse import urlparse
 import logging
 import sys
+import re
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from utilities import trim_and_add_hyphens, input_output_folder
 
@@ -121,26 +122,14 @@ class PatanjaliSpider(scrapy.Spider):
                 "div.block-breadcrumb>ul.breadcrumb>li.active::text"
             ).get()
         heading = response.css("div.product-detail-section>h3::text").get()
-        productInformation_parent_div="div.product-information > div > p > "
-        productInformation = ''.join(response.css(productInformation_parent_div + "font::text").getall())
-        if not productInformation:
-            productInformation = "".join(response.css(productInformation_parent_div + "table td").css('::text').extract())
-        benefits_parent_div="div#collapse1 > div > div > "
-        benefits = ''.join(response.css(benefits_parent_div + "font::text").getall())
-        if not benefits:
-            benefits = "".join(response.css(benefits_parent_div + "table td").css('::text').extract())
-        ingredients_parent_div="div#collapse2 > div > div > "
-        ingredients = ''.join(response.css(ingredients_parent_div + "font::text").getall())
-        if not ingredients:
-            ingredients = "".join(response.css(ingredients_parent_div + "table td").css('::text').extract())
-        howToUse_parent_div="div#collapse3 > div > div > "
-        howToUse = ''.join(response.css(howToUse_parent_div + "font::text").getall())
-        if not howToUse:
-            howToUse = "".join(response.css(howToUse_parent_div + "table td").css('::text').extract())
-        otherProductInfo_parent_div="div#collapse4 > div.panel-body > "
-        otherProductInfo = ''.join(response.css(otherProductInfo_parent_div + "font::text").getall())
-        if not otherProductInfo:
-            otherProductInfo = "".join(response.css(otherProductInfo_parent_div + "table td").css('::text').extract())
+        product_information_nested_text = response.xpath('//div[@class="product-information"]//div[@class=""]//*[normalize-space()]/text()').extract()
+        product_information=' '.join(text.strip() for text in product_information_nested_text if text.strip())
+        
+        other_product_information_nested_text = response.xpath('//div[@id="accordion"]//*[normalize-space()]/text()').extract()
+        other_product_information_complete_string=' '.join(text.strip() for text in other_product_information_nested_text if text.strip())
+        keywords = ["Benefits ", "Ingredients ", "Other Product Info ", "How to use "]
+        other_product_information = re.sub(f'({"|".join(keywords)})', r'\n\1\n', other_product_information_complete_string)
+        
         variants = ", ".join(response.css(
                 "div.col-md-5.col-sm-4.details-custom>div>select>option::text"
             ).getall())
@@ -154,10 +143,6 @@ class PatanjaliSpider(scrapy.Spider):
 
         lastbreadcrumb = lastbreadcrumb.strip() if lastbreadcrumb is not None else ""
         heading = heading.strip() if heading is not None else ""
-        benefits_string = benefits if benefits is not None else ""
-        ingredients_string = ingredients if ingredients is not None else ""
-        howToUse_string = howToUse if howToUse is not None else ""
-        otherProductInfo_string=otherProductInfo if otherProductInfo is not None else ""
         variants = variants if variants is not None else ""
         productImage = productImage if productImage is not None else ""
         parsed_url = urlparse(response.url)
@@ -168,16 +153,10 @@ class PatanjaliSpider(scrapy.Spider):
             'Tags': category,
             "lastbreadcrumb": lastbreadcrumb,
             "heading": heading,
+            "cleaned-heading": re.sub(r'\s+\d+(\.\d+)?[a-zA-Z]*\s*x\s+[a-zA-Z]*\s*$', '', heading),
             "product-information": "<b>Product Information</b>"
-            + productInformation
-            + "\n<b>Benefits</b>"
-            + benefits_string
-            + "\n<b>Ingredients</b>"
-            + ingredients_string
-            + "\n<b>How to use</b>"
-            + howToUse_string
-            + "\n<b>Other Product Info</b>"
-            + otherProductInfo_string,
+            + product_information
+            + other_product_information,
             "variants": variants,
             "product-image": productImage,
         }
