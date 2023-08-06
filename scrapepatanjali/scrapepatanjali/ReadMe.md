@@ -9,7 +9,7 @@ Ubuntu:
 class: "."
 id: "#"
 
-source scrapy-env/bin/activate && python3 scrapepatanjali/scrapepatanjali/create_shopbase_import_file.py
+cd ~/temp/scrapepatanjali/ && source scrapy-env/bin/activate && python3 ~/temp/scrapepatanjali/scrapepatanjali/scrapepatanjali/create_shopbase_import_file.py
 
 Run example spider: 
 - cd ~/temp/scrapepatanjali/ && source scrapy-env/bin/activate && cd ~/temp/scrapepatanjali/scrapepatanjali/ && scrapy crawl example
