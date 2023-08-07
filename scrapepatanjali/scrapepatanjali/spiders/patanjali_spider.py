@@ -1,4 +1,12 @@
 import scrapy
+
+from scrapy.linkextractors import LinkExtractor
+from scrapy.spiders import CrawlSpider, Rule
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+import time
+
 import csv
 from collections import OrderedDict
 import os
@@ -71,10 +79,8 @@ class PatanjaliSpider(scrapy.Spider):
                 "https://www.patanjaliayurved.net/category/dishwash-bar-and-gel/221",
                 "https://www.patanjaliayurved.net/category/toothpaste/22",
                 "https://www.patanjaliayurved.net/category/tooth-brush/23",
-                "https://www.patanjaliayurved.net/category/tooth-powder-manjan/147",
-                "https://www.patanjaliayurved.net/category/shampoo/31",
-                "https://www.patanjaliayurved.net/category/hair-oil/32",
-                "https://www.patanjaliayurved.net/category/conditioner/148",
+                "https://www.patanjaliayurved.net/category/tooth-powder-manjan/147",  
+                "https://www.patanjaliayurved.net/category/hair-care/24"
                 "https://www.patanjaliayurved.net/category/hair-gel/219",
                 "https://www.patanjaliayurved.net/category/body-care/25",
                 "https://www.patanjaliayurved.net/category/eye-care/137",
@@ -109,13 +115,39 @@ class PatanjaliSpider(scrapy.Spider):
     #         yield scrapy.Request(url=response.urljoin(child_url), callback=self.parse_child)
 
     def parse_parent(self, response):
-        child_urls = response.css(
-            "div#gridview>div>article>figure>a.figure-href::attr(href)"
-        ).getall()
-        for child_url in child_urls:
-            yield scrapy.Request(
-                url=child_url, callback=self.parse_child
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
+        self.driver = webdriver.Chrome(options=chrome_options)
+        try:
+            self.driver.get(response.url)
+            time.sleep(2)  # Allow time for initial content to load
+            # Handle popup if present
+            try:
+                popup_element = self.driver.find_element_by_xpath('//button[text()="No, thanks!"]')
+                if popup_element:
+                    popup_element.click()
+                    time.sleep(2)  # Allow time for popup to close
+            except:
+                pass  # Popup not found, continue scraping
+
+            # Scroll down the page to load more content
+            for _ in range(5):  # Scroll down 5 times, adjust as needed
+                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                time.sleep(1)  # Allow time for more content to load
+
+            # Extract the dynamically loaded content using JavaScript
+            child_urls = self.driver.execute_script(
+                'return Array.from(document.querySelectorAll("div#gridview>div>article>figure>a.figure-href"))'
             )
+            for child_url in child_urls:
+                yield scrapy.Request(
+                    url=child_url.get_attribute('href'), callback=self.parse_child
+                )
+        except Exception as e:
+            logging.error("An error occurred: %s", str(e))
+        finally:
+            self.driver.quit()
 
     def parse_child(self, response):
         lastbreadcrumb = response.css(
