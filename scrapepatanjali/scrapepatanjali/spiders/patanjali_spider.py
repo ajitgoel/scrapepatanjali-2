@@ -150,9 +150,7 @@ class PatanjaliSpider(scrapy.Spider):
             self.driver.quit()
 
     def parse_child(self, response):
-        lastbreadcrumb = response.css(
-                "div.block-breadcrumb>ul.breadcrumb>li.active::text"
-            ).get()
+        lastbreadcrumb = response.css("div.block-breadcrumb>ul.breadcrumb>li.active::text").get()
         heading = response.css("div.product-detail-section>h3::text").get()
         product_information_nested_text = response.xpath('//div[@class="product-information"]//div[@class=""]//*[normalize-space()]/text()').extract()
         product_information =' '.join(text.strip() for text in product_information_nested_text if text.strip())
@@ -160,7 +158,7 @@ class PatanjaliSpider(scrapy.Spider):
         other_product_information_nested_text = response.xpath('//div[@id="accordion"]//*[normalize-space()]/text()').extract()
         other_product_information_complete_string=' '.join(text.strip() for text in other_product_information_nested_text if text.strip())
         keywords = ["Benefits ", "Ingredients ", "Other Product Info ", "How to use "]
-        other_product_information = re.sub(f'({"|".join(keywords)})', r'\n<b>\1</b>\n', other_product_information_complete_string)
+        other_product_information = re.sub(f'({"|".join(keywords)})', r'\n<b>\1</b><br/>', other_product_information_complete_string)
         
         variants = ", ".join(response.css(
                 "div.col-md-5.col-sm-4.details-custom>div>select>option::text"
@@ -186,7 +184,7 @@ class PatanjaliSpider(scrapy.Spider):
             "lastbreadcrumb": lastbreadcrumb,
             "heading": heading,
             "cleaned-heading": re.sub(r'\s{3,}.*$', '', heading),
-            "product-information": "<b>Product Information</b>\n"
+            "product-information": "<b>Product Information</b><br/>"
             + product_information
             + other_product_information,
             "variants": variants,
