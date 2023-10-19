@@ -22,8 +22,13 @@ ON levenshtein(regexp_replace(currentinvoice." Description of Goods ", '[^a-zA-Z
                regexp_replace(ingredients."Product Title", '[^a-zA-Z0-9]', '', 'g')) < 3
 order by ingredients."Product Title" asc
 
-select currentinvoice." Description of Goods " as "Invoice title", 
+select currentinvoice." Description of Goods " as "Invoice title", currentinvoice." Pack Size " as "Invoice SKU",
 ingredients."Product Title" as "Ingredients title",
+ingredients."Product SKU" as "Ingredients SKU",
+currentinvoice." Sr. Nos ", currentinvoice."Code1", currentinvoice."Code2", currentinvoice."Code3", 
+currentinvoice." Description of Goods ", currentinvoice." Pack Size ", currentinvoice." HS CODE ", 
+currentinvoice." Quantity Per Box ", currentinvoice." Quantity in Pcs ", currentinvoice." Unit price in USD ",
+currentinvoice." Total amt. In USD ",
 ingredients."Product Description", ingredients."Product Key features", ingredients."Product SKU", 
 ingredients."Product UPC USA", ingredients."Product Dimension (L*W*H) Inches", 
 ingredients.ingredients, ingredients."Artificial food colour (Yes/No)", ingredients."Allergy guide content"
@@ -34,19 +39,58 @@ order by
 ingredients."Product Title" asc
 
 
+select currentinvoice." Description of Goods " as "Invoice title", currentinvoice." Pack Size " as "Invoice SKU",
+ingredients."Product Title" as "Ingredients title",
+ingredients."Product SKU" as "Ingredients SKU",
+currentinvoice." Sr. Nos ", currentinvoice."Code1", currentinvoice."Code2", currentinvoice."Code3", 
+currentinvoice." Description of Goods ", currentinvoice." Pack Size ", currentinvoice." HS CODE ", 
+currentinvoice." Quantity Per Box ", currentinvoice." Quantity in Pcs ", currentinvoice." Unit price in USD ",
+currentinvoice." Total amt. In USD ",
+ingredients."Product Description", ingredients."Product Key features", ingredients."Product SKU", 
+ingredients."Product UPC USA", ingredients."Product Dimension (L*W*H) Inches", 
+ingredients.ingredients, ingredients."Artificial food colour (Yes/No)", ingredients."Allergy guide content"
+from 
+"LatestInvoice-09262023" currentinvoice cross join ingredients_list ingredients
+--ON fuzzy_match_difflib(REPLACE(currentinvoice." Description of Goods ", 'Patanjali', ''), 
+--REPLACE(ingredients.product, 'Patanjali', ''))>0.1
+where --currentinvoice." Sr. Nos " in (89) and 
+currentinvoice." Sr. Nos " in (80,
+81,
+83,
+87,
+94
+) and ingredients."Sr. No" in (50)
+--currentinvoice." Description of Goods " IN ('Patanjali Rose Body Cleanser') and ingredients."Product Title" IN ('Patanjali Rose Body Cleanser')
+order by ingredients."Product Title" asc
 
+select i."Price per Unit (USD)" as "old price", d."Price per Unit (USD)" as "new price", 
+d."PRODUCT DETAILS", d."PACK SIZE", d.* 
+from "Invoice-07062023_WithAllProducts" i right outer join "draftinvoice-10162023" d on i.code=d.code 
+order by i."Price per Unit (USD)" desc, d."PRODUCT DETAILS" asc
+
+INSERT INTO public."LatestInvoice-09262023_WithOtherInfo"
+SELECT * FROM public."LatestInvoice-09262023";
+
+
+select currentinvoice." Description of Goods " as "Invoice title", currentinvoice." Pack Size " as "Invoice SKU",
+ingredients."Product Title" as "Ingredients title",
+ingredients."Product SKU" as "Ingredients SKU",
+currentinvoice." Sr. Nos ", currentinvoice."Code1", currentinvoice."Code2", currentinvoice."Code3", 
+currentinvoice." Description of Goods ", currentinvoice." Pack Size ", currentinvoice." HS CODE ", 
+currentinvoice." Quantity Per Box ", currentinvoice." Quantity in Pcs ", currentinvoice." Unit price in USD ",
+currentinvoice." Total amt. In USD ",
+ingredients."Product Description", ingredients."Product Key features", ingredients."Product SKU", 
+ingredients."Product UPC USA", ingredients."Product Dimension (L*W*H) Inches", 
+ingredients.ingredients, ingredients."Artificial food colour (Yes/No)", ingredients."Allergy guide content"
+from 
+"LatestInvoice-09262023" currentinvoice cross join ingredients_list ingredients
+where currentinvoice." Description of Goods " in (
+'Kesh Kanti Herbal Mehandi (Dark Brown)-T') and 
+ingredients."Product Title" in (
+'Patanjali Kesh Kanti Herbal Mehandi (Dark Brown)')
+order by ingredients."Product Title" asc
 
 SELECT * FROM pg_extension WHERE extname = 'plpython3u';
-
-SELECT t1.name, t2.name
-FROM table1 t1, table2 t2
-WHERE fuzzy_match_difflib(t1.name, t2.name)>0.7;
-SELECT * FROM table1;
-SELECT * FROM table2;
-WHERE fuzzy_match_difflib(t1.name, t2.name)>0.7;
-
-SELECT * FROM pg_available_extensions order by name
-
 SELECT * FROM pg_extension WHERE extname LIKE 'plpython%';
 SELECT * FROM pg_available_extensions WHERE name LIKE 'plpython3u%';
 
@@ -66,6 +110,3 @@ CREATE FUNCTION fuzzy_match(text, text, int) RETURNS boolean AS $$
    import fuzzywuzzy.process
    return fuzzy_match(text1, text2, threshold) 
 $$ LANGUAGE plpython3u;
-
---PostgreSQL 16.0 (Ubuntu 16.0-1.pgdg22.04+1) on x86_64-pc-linux-gnu, compiled by gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0, 64-bit
-
