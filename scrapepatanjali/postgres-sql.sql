@@ -68,9 +68,29 @@ d."PRODUCT DETAILS", d."PACK SIZE", d.*
 from "Invoice-07062023_WithAllProducts" i right outer join "draftinvoice-10162023" d on i.code=d.code 
 order by i."Price per Unit (USD)" desc, d."PRODUCT DETAILS" asc
 
+select i.category,d.description, d." Pack Size ", d."added-to-amazon",d."amazon-comments", addedtowebsite, 
+d."patanjali-ayurved-url" , d.* 
+from "Invoice-07062023_WithAllProducts" i right outer join "LatestInvoice-09262023_WithOtherInfo" d 
+on i.code=d."Code2"
+where d.description ilike '%Almond%'
+
+select i.category,d.description, d." Pack Size ", d."added-to-amazon",d."amazon-comments", addedtowebsite, 
+d."patanjali-ayurved-url" , d.* 
+from "Invoice-07062023_WithAllProducts" i right outer join "LatestInvoice-09262023_WithOtherInfo" d 
+on i.code=d."Code2" where d.description ilike '%Saundarya%'
+--where addedtowebsite =0
+select il."Product Title",il."Product UPC USA", * from ingredients_list il where 
+--il."Product Title" ilike '%Rose%'
+il."Product UPC USA" ilike '8904109420597'
+
+SELECT TABLE_NAME, COLUMN_NAME FROM information_schema.columns WHERE COLUMN_NAME ILIKE '%upc%';
+
+select " Unit price in USD ", * from public."LatestInvoice-09262023_WithOtherInfo" 
+
 INSERT INTO public."LatestInvoice-09262023_WithOtherInfo"
 SELECT * FROM public."LatestInvoice-09262023";
 
+select count(*) from "LatestInvoice-09262023_WithOtherInfo" liwoi where addedtowebsite =1
 
 select currentinvoice." Description of Goods " as "Invoice title", currentinvoice." Pack Size " as "Invoice SKU",
 ingredients."Product Title" as "Ingredients title",
@@ -110,3 +130,67 @@ CREATE FUNCTION fuzzy_match(text, text, int) RETURNS boolean AS $$
    import fuzzywuzzy.process
    return fuzzy_match(text1, text2, threshold) 
 $$ LANGUAGE plpython3u;
+
+CREATE OR REPLACE FUNCTION print_python_env() RETURNS void AS $$
+import sys
+plpy.notice(sys.executable)
+plpy.notice(sys.path)
+$$ LANGUAGE plpython3u;
+SELECT print_python_env();
+
+
+
+CREATE OR REPLACE FUNCTION google_shopping_scraper(search_term text)  
+RETURNS SETOF text AS $$
+
+import requests
+import re
+from html2text import html2text
+
+url = f'https://www.google.com/search?q={search_term}&tbm=shop'
+headers = {"User-Agent": "Mozilla/5.0"}
+res = requests.get(url, headers=headers)
+html_text = res.text
+plain_text = html2text(html_text)
+
+lines = plain_text.split('\n')
+result = []
+
+for i in range(len(lines)):
+    if "$" in lines[i] and " from " in lines[i]:
+        line_parts = filter(None, [lines[i].strip(), lines[i+1].strip(), lines[i+2].strip()])
+        line = ': '.join(line_parts)
+
+        for j in range(i-1, -1, -1):
+           if lines[j].startswith("["):
+               index_of_line = j
+               break
+           
+        joined_lines = ''.join(lines[index_of_line:])
+        matches = re.findall(r'(?<!!)(\[(.*?)\])', joined_lines, re.DOTALL | re.IGNORECASE)
+        for match in matches:
+         if "![" not in match[1] and "compare prices" not in match[1].lower() and "cleanse" not in match[1].lower():
+             line += ': ' + match[1]
+             break
+        result.append(line)
+return result
+
+$$ LANGUAGE plpython3u;
+
+
+SELECT * FROM google_shopping_scraper('Patanjali Giloy Juice 500ml');
+
+select currentinvoice.id as "id", currentinvoice.description as "description", 
+currentinvoice.pack_size as "pack_size",
+google_shopping_scraper(currentinvoice.description || ' ' || currentinvoice.pack_size) 
+as "price",
+LOCALTIMESTAMP as "datetime"
+into public.google_shopping_prices
+from 
+"LatestInvoice-09262023" currentinvoice
+select * from google_shopping_prices order by  description, pack_size, price
+
+select count(distinct id) from google_shopping_prices order by  description, pack_size, price
+
+delete from public.google_shopping_prices
+
