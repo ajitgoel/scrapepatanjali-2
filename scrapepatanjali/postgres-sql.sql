@@ -138,8 +138,6 @@ plpy.notice(sys.path)
 $$ LANGUAGE plpython3u;
 SELECT print_python_env();
 
-
-
 CREATE OR REPLACE FUNCTION google_shopping_scraper(search_term text)  
 RETURNS SETOF text AS $$
 
@@ -176,10 +174,7 @@ for i in range(len(lines)):
 return result
 
 $$ LANGUAGE plpython3u;
-
-
 SELECT * FROM google_shopping_scraper('Patanjali Giloy Juice 500ml');
-
 select currentinvoice.id as "id", currentinvoice.description as "description", 
 currentinvoice.pack_size as "pack_size",
 google_shopping_scraper(currentinvoice.description || ' ' || currentinvoice.pack_size) 
@@ -190,6 +185,81 @@ from
 "LatestInvoice-09262023" currentinvoice
 select * from google_shopping_prices order by  description, pack_size, price
 
+CREATE TYPE review AS (
+    review_date text,
+    review_stars text,
+    review_name text,
+    review_comment text
+);
+
+CREATE OR REPLACE FUNCTION patanjaliayurved_reviews_scraper(url text) 
+RETURNS TABLE (review_date DATE, review_stars TEXT, review_name TEXT, review_comment TEXT) AS $$
+import requests
+from bs4 import BeautifulSoup
+import random
+from datetime import datetime
+
+headers = {"User-Agent": "Mozilla/5.0"}
+if not url:
+   return []
+res = requests.get(url, headers=headers)
+html_text = res.text
+soup = BeautifulSoup(html_text, 'html.parser')
+review_wrappers = soup.find_all('div', {'class': 'review-wrap'})
+names = ['Ajit', 'Kumar', 'Shyam', 'Ram', 'Laxman', 'Jesus', 'Kesari', 'Ramprasad', 'Tiger', 'Aamir']
+result = []
+for wrapper in review_wrappers:
+   review = {'review_date': None, 'review_stars': None, 'review_name': None, 'review_comment': None}
+   review_date = wrapper.find('div', {'class': 'review-header'}).find('div', {'class': 'review-top-right'}).find('span')
+   review_stars_div = wrapper.find('div', {'class': 'review-header'}).find('div', {'class': 'review-mid'}).find('div', {'class': 'review-stars'}).find('div', {'class': 'ratingtars'}).find('div', {'class': 'review-rating-block'}).find('div', {'class': 'rating-block'})
+   if review_stars_div:
+   	i_elements = review_stars_div.find_all('i')
+   	star_count = len(i_elements)
+   	review['review_stars'] = star_count
+   
+   review_name_b = wrapper.find('div', {'class': 'review-header'}).find('div', {'class': 'review-top-right'}).find('b')
+   if review_name_b:
+       review_name = review_name_b.text.strip()
+       if review_name == '':
+          review_name = random.choice(names)
+   else:
+       review_name = random.choice(names)
+       
+   review_comment = wrapper.find('div', {'class': 'review-text'})
+   if review_date:
+   	date_str = review_date.text.strip().replace("at ", "")
+   	date_obj = datetime.strptime(date_str, "%d-%m-%Y %I:%M %p")
+   	formatted_date = date_obj.strftime("%m/%d/%Y")
+   	review['review_date'] = formatted_date
+
+   review['review_name'] = review_name
+   if review_comment:
+       review['review_comment'] = review_comment.text.strip()
+   result.append(review)
+return result
+$$ LANGUAGE plpython3u;
+
+
+INSERT INTO public.reviews (date_of_review, rating, name_of_customer, review)
+SELECT 
+ r.review_date, 
+ r.review_stars, 
+ r.review_name, 
+ r.review_comment 
+FROM "LatestInvoice-09262023_WithOtherInfo"
+CROSS APPLY patanjaliayurved_reviews_scraper(
+"LatestInvoice-09262023_WithOtherInfo"."patanjali-ayurved-url") AS r
+
+select * from patanjaliayurved_reviews_scraper(
+'https://www.patanjaliayurved.net/product/natural-personal-care/hair-care/hair-oil/patanjali-almond-hair-oil/540')
+
+SELECT 
+   SPLIT_PART('a|b|c', '|', 1) AS part1,
+   SPLIT_PART('a|b|c', '|', 2) AS part2,
+   SPLIT_PART('a|b|c', '|', 3) AS part3;
+
+
+  
 select count(distinct id) from google_shopping_prices order by  description, pack_size, price
 
 delete from public.google_shopping_prices
