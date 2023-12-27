@@ -174,6 +174,7 @@ for i in range(len(lines)):
 return result
 
 $$ LANGUAGE plpython3u;
+
 SELECT * FROM google_shopping_scraper('Patanjali Giloy Juice 500ml');
 select currentinvoice.id as "id", currentinvoice.description as "description", 
 currentinvoice.pack_size as "pack_size",
@@ -193,7 +194,7 @@ CREATE TYPE review AS (
 );
 
 CREATE OR REPLACE FUNCTION patanjaliayurved_reviews_scraper(url text) 
-RETURNS TABLE (review_date DATE, review_stars TEXT, review_name TEXT, review_comment TEXT) AS $$
+RETURNS SETOF text AS $$
 import requests
 from bs4 import BeautifulSoup
 import random
@@ -234,31 +235,28 @@ for wrapper in review_wrappers:
 
    review['review_name'] = review_name
    if review_comment:
-       review['review_comment'] = review_comment.text.strip()
-   result.append(review)
+   	review['review_comment'] = review_comment.text.strip()
+   review_data = " : ".join([str(review[key]) for key in review.keys()])
+   result.append(review_data)
 return result
 $$ LANGUAGE plpython3u;
 
+INSERT INTO public.reviews ("patanjali-ayurved-url", "scraped_review")
+SELECT invoice."patanjali-ayurved-url", patanjaliayurved_reviews_scraper(invoice."patanjali-ayurved-url") 
+FROM "LatestInvoice-09262023_WithOtherInfo" as invoice
+where invoice."patanjali-ayurved-url" is not null and invoice.srnos between 61 and 145
 
-INSERT INTO public.reviews (date_of_review, rating, name_of_customer, review)
-SELECT 
- r.review_date, 
- r.review_stars, 
- r.review_name, 
- r.review_comment 
-FROM "LatestInvoice-09262023_WithOtherInfo"
-CROSS APPLY patanjaliayurved_reviews_scraper(
-"LatestInvoice-09262023_WithOtherInfo"."patanjali-ayurved-url") AS r
+update public.reviews set review
+   date_of_review=SPLIT_PART(scraped_review, ' : ', 1),
+   rating=SPLIT_PART(scraped_review, ' : ', 2),
+   name_of_customer=SPLIT_PART(scraped_review, ' : ', 3),
+   review=SPLIT_PART(scraped_review, ' : ', 4);
 
-select * from patanjaliayurved_reviews_scraper(
+ select * from patanjaliayurved_reviews_scraper(
 'https://www.patanjaliayurved.net/product/natural-personal-care/hair-care/hair-oil/patanjali-almond-hair-oil/540')
 
-SELECT 
-   SPLIT_PART('a|b|c', '|', 1) AS part1,
-   SPLIT_PART('a|b|c', '|', 2) AS part2,
-   SPLIT_PART('a|b|c', '|', 3) AS part3;
-
-
+update public.reviews set product_handle ='patanjali-atta-noodles-classic' 
+where "patanjali-ayurved-url"='https://www.patanjaliayurved.net/product/natural-food-products/noodles/patanjali-atta-noodles-classic/621'
   
 select count(distinct id) from google_shopping_prices order by  description, pack_size, price
 
