@@ -4,28 +4,9 @@ import csv
 import argparse
 from collections import OrderedDict
 import os
-
-def check_file_permissions(file_path):
-   if os.access(file_path, os.R_OK):
-       print(f"Read permission is granted for file: {file_path}")
-   else:
-       print(f"Read permission is not granted for file: {file_path}")
-
-   if os.access(file_path, os.W_OK):
-       print(f"Write permission is granted for file: {file_path}")
-   else:
-       print(f"Write permission is not granted for file: {file_path}")
-
-   if os.access(file_path, os.X_OK):
-       print(f"Execute permission is granted for file: {file_path}")
-   else:
-       print(f"Execute permission is not granted for file: {file_path}")
+from operator import itemgetter
 
 def filter_csv(input_filename, output_filename):
-    # os.chmod(input_filename, 0o644)
-    # os.chmod(output_filename, 0o644)
-    #check_file_permissions(input_filename)
-    #check_file_permissions(output_filename)
     new_columns = ['Category', 'Brand', 'Product Name', 'Product Description', 'Package Weight(lb)', 
                    'Package Length(inch)', 'Package Width(inch)', 'Package Height(inch)', 'Delivery options',
                    'Identifier Code Type', 'Identifier Code', 'Variation 1', 'Variation 2', 'Variant Image', 
@@ -34,8 +15,8 @@ def filter_csv(input_filename, output_filename):
                    'Product Image 5', 'Product Image 6', 'Product Image 7', 'Product Image 8', 
                    'Product Image 9', 'Size Chart', 'Skin Type', 'Country Of Origin', 'Shelf Life', 
                    'Alcohol Or Aerosol', 'Allergen Information', 'Net Weight', 'Volume', 'Ingredients', 
-                   'Quantity Per Pack', 'Skincare', 'Benefits', 'Body Care Benefits', 'Cautions/Warnings Manufacturer', 
-                   'Drug Labeling', 'US Certificate of Conformity', 'Declaration of Conformity', 
+                   'Quantity Per Pack', 'Skincare Benefits', 'Body Care Benefits', 'Cautions/Warnings', 
+                   'Manufacturer', 'Drug Labeling', 'US Certificate of Conformity', 'Declaration of Conformity', 
                    'Cosmetics Packaging Labelling', 'Product Status']
     
     tags = ["oil", "body-cleanser", "toothpaste", "hair-oil", "shower-gel", "conditioner", "mehandi,hair-color", 
@@ -48,7 +29,9 @@ def filter_csv(input_filename, output_filename):
         rows_published_true = [row for row in rows if row[header.index('Published')] == 'TRUE']
         rows_selectedTags = [row for row in rows_published_true if any(tag in row[header.index('Tags')].split(',') for tag in tags)]
         handle_values = list(set([row[header.index('Handle')] for row in rows_selectedTags]))
-        handle_rows = [row for row in rows if row[header.index('Handle')] in handle_values]    
+        handle_rows = [row for row in rows if row[header.index('Handle')] in handle_values]   
+        handle_rows_filtered = list(filter(lambda row: row[header.index('Image Position')], handle_rows))
+        handle_rows_ordered = sorted(handle_rows_filtered, key=itemgetter(header.index('Handle'), header.index('Image Position')))
 
     with open(output_filename, 'w', newline='') as new_file:
         csv_writer = csv.writer(new_file)
@@ -60,26 +43,37 @@ def filter_csv(input_filename, output_filename):
                 new_row[new_columns.index('Product Name')] = row[header.index('Title')]
                 new_row[new_columns.index('Brand')] = 'Patanjali'
                 new_row[new_columns.index('Product Description')] = row[header.index('Body (Html)')]
-                new_row[new_columns.index('Package Weight(lb)')] = row[header.index('Body (Html)')]
-                
+                try:
+                    weight_lbs = float(row[header.index('Variant Grams')]) * 0.00220462
+                except ValueError:
+                    weight_lbs = ''
+                new_row[new_columns.index('Package Weight(lb)')] = weight_lbs
+
                 new_row[new_columns.index('Identifier Code Type')] = 'UPC'
                 new_row[new_columns.index('Identifier Code')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Retail Price (Local Currency)')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Quantity in Patanjali Ayurved US')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Seller SKU')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Main Product Image')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Product Image 2')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Product Image 2')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Product Image 3')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Product Image 4')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Product Image 5')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Product Image 6')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Product Image 7')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Product Image 8')] = row[header.index('Variant Sku')]
-                new_row[new_columns.index('Product Image 9')] = row[header.index('Variant Sku')]
+                new_row[new_columns.index('Retail Price (Local Currency)')] = row[header.index('Variant Price')]
+                new_row[new_columns.index('Quantity in Patanjali Ayurved US')] = row[header.index('Variant Inventory Qty')]
+                new_row[new_columns.index('Seller SKU')] = row[header.index('Handle')]
                 new_row[new_columns.index('Country Of Origin')] = 'India'
+                new_row[new_columns.index('Ingredients')] = 'Ingredients'
+                
                 new_row[new_columns.index('Manufacturer')] = 'Patanjali'
                 new_row[new_columns.index('Product Status')] = 'Draft'
+
+                filtered_handle_rows_ordered = list(filter(lambda x: x[header.index('Handle')] == row[header.index('Handle')], handle_rows_ordered))
+                image_srcs = [row[header.index('Image Src')] for row in filtered_handle_rows_ordered]
+                
+                print(f"row[header.index('Handle')]: {row[header.index('Handle')]} image_srcs: {image_srcs}")
+                new_row[new_columns.index('Main Product Image')] = image_srcs[0]
+                new_row[new_columns.index('Product Image 2')] = image_srcs[1] if len(image_srcs) > 1 else ''
+                new_row[new_columns.index('Product Image 3')] = image_srcs[2] if len(image_srcs) > 2 else ''
+                new_row[new_columns.index('Product Image 4')] = image_srcs[3] if len(image_srcs) > 3 else ''
+                new_row[new_columns.index('Product Image 5')] = image_srcs[4] if len(image_srcs) > 4 else ''
+                new_row[new_columns.index('Product Image 6')] = image_srcs[5] if len(image_srcs) > 5 else ''
+                new_row[new_columns.index('Product Image 7')] = image_srcs[6] if len(image_srcs) > 6 else ''
+                new_row[new_columns.index('Product Image 8')] = image_srcs[7] if len(image_srcs) > 7 else ''
+                new_row[new_columns.index('Product Image 9')] = image_srcs[8] if len(image_srcs) > 8 else ''
+
                 csv_writer.writerow(new_row)
         
     return
