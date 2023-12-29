@@ -61,9 +61,33 @@ def filter_csv(input_filename, output_filename):
         for row in handle_rows:
             handle=row[header.index('Handle')]
             result=get_ingredients(handle)
+            tags = row[header.index('Tags')].split(',')
+            if any(tag.strip().lower() in ["toothpaste"] for tag in tags):
+                category = "Nasal & Oral Care/Toothpastes (601696)"
+            elif any(tag.strip().lower() in ["shampoo", "conditioner", "hair-cleanser"] for tag in tags):
+                category = "Haircare & Styling/Shampoo & Conditioner (601469)"
+            elif any(tag.strip().lower() in ["eye-liner"] for tag in tags):
+                category = "Makeup/Eyeliner & Lipliner (601587)"
+            elif any(tag.strip().lower() in ["mehandi", "hair-color"] for tag in tags):
+                category = "Haircare & Styling/Hair Dye (601516)"
+            elif any(tag.strip().lower() in ["sun-screen"] for tag in tags):
+                category = "Skincare/Facial Sunscreen & Sun Care (601602)"
+            elif any(tag.strip().lower() in ["hair-oil"] for tag in tags):
+                category = "Haircare & Styling/Hair Treatments/Scalp Treatments (981512)"
+            elif any(tag.strip().lower() in ["oil"] for tag in tags):
+                category = "Bath & Body Care/Body & Massage Oil (873736)"
+            elif any(tag.strip().lower() in ["face-scrub"] for tag in tags):
+                category = "Skincare/Face Scrubs & Peels (601613)"
+            elif any(tag.strip().lower() in ["foot-care"] for tag in tags):
+                category = "Hand, Foot & Nail Care/Hand Lotions, Creams & Scrubs (601480)"
+            elif any(tag.strip().lower() in ["body-cleanser", "shower-gel"] for tag in tags):
+                category = "Bath & Body Care/Body Wash & Soap (601493)"
+            elif any(tag.strip().lower() in ["face-cream", "face-pack", "face-wash"] for tag in tags):
+                category = "Skincare/Facial Cleansers (601609)"
+
             if row[header.index('Published')] == 'TRUE':
                 new_row = [''] * len(new_columns)
-                new_row[new_columns.index('Category')] = row[header.index('Tags')]
+                new_row[new_columns.index('Category')] = category
                 new_row[new_columns.index('Product Name')] = row[header.index('Title')]
                 new_row[new_columns.index('Brand')] = 'Patanjali'
                 new_row[new_columns.index('Product Description')] = row[header.index('Body (Html)')]
@@ -88,7 +112,6 @@ def filter_csv(input_filename, output_filename):
                 filtered_handle_rows_ordered = list(filter(lambda x: x[header.index('Handle')] == handle, handle_rows_ordered))
                 image_srcs = [row[header.index('Image Src')] for row in filtered_handle_rows_ordered]
                 
-                #print(f"row[header.index('Handle')]: {row[header.index('Handle')]} image_srcs: {image_srcs}")
                 new_row[new_columns.index('Main Product Image')] = image_srcs[0]
                 new_row[new_columns.index('Product Image 2')] = image_srcs[1] if len(image_srcs) > 1 else ''
                 new_row[new_columns.index('Product Image 3')] = image_srcs[2] if len(image_srcs) > 2 else ''
