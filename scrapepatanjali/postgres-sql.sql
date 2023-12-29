@@ -261,4 +261,5 @@ where "patanjali-ayurved-url"='https://www.patanjaliayurved.net/product/natural-
 select count(distinct id) from google_shopping_prices order by  description, pack_size, price
 
 delete from public.google_shopping_prices
+SHOW data_directory
 

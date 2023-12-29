@@ -5,6 +5,28 @@ import argparse
 from collections import OrderedDict
 import os
 from operator import itemgetter
+import psycopg2
+
+def get_ingredients(handle):
+  try:
+      connection = psycopg2.connect(user="postgres",password="Meetha@1974",host="localhost",port="5432",
+                                    database="postgres")
+      cursor = connection.cursor()
+      select_query = """SELECT ingredients,"{}" FROM "{}" WHERE handle = %s""".format("allergy-guide-content", "LatestInvoice09262023WithIngredients")
+
+      cursor.execute(select_query, (handle,))
+      result = cursor.fetchone()
+      if result is not None:
+          return result
+      else:
+          return None
+  except (Exception, psycopg2.Error) as error:
+      print("Failed to fetch ingredients from ingredients table", error)
+
+  finally:
+      if connection:
+          cursor.close()
+          connection.close()
 
 def filter_csv(input_filename, output_filename):
     new_columns = ['Category', 'Brand', 'Product Name', 'Product Description', 'Package Weight(lb)', 
@@ -37,6 +59,8 @@ def filter_csv(input_filename, output_filename):
         csv_writer = csv.writer(new_file)
         csv_writer.writerow(new_columns)
         for row in handle_rows:
+            handle=row[header.index('Handle')]
+            result=get_ingredients(handle)
             if row[header.index('Published')] == 'TRUE':
                 new_row = [''] * len(new_columns)
                 new_row[new_columns.index('Category')] = row[header.index('Tags')]
@@ -53,17 +77,18 @@ def filter_csv(input_filename, output_filename):
                 new_row[new_columns.index('Identifier Code')] = row[header.index('Variant Sku')]
                 new_row[new_columns.index('Retail Price (Local Currency)')] = row[header.index('Variant Price')]
                 new_row[new_columns.index('Quantity in Patanjali Ayurved US')] = row[header.index('Variant Inventory Qty')]
-                new_row[new_columns.index('Seller SKU')] = row[header.index('Handle')]
+                new_row[new_columns.index('Seller SKU')] = handle
                 new_row[new_columns.index('Country Of Origin')] = 'India'
-                new_row[new_columns.index('Ingredients')] = 'Ingredients'
-                
+                new_row[new_columns.index('Ingredients')] = result[0]
+                new_row[new_columns.index('Allergen Information')] = "" if str(result[1]).lower() in ["no", "", None] else result[1]
+
                 new_row[new_columns.index('Manufacturer')] = 'Patanjali'
                 new_row[new_columns.index('Product Status')] = 'Draft'
 
-                filtered_handle_rows_ordered = list(filter(lambda x: x[header.index('Handle')] == row[header.index('Handle')], handle_rows_ordered))
+                filtered_handle_rows_ordered = list(filter(lambda x: x[header.index('Handle')] == handle, handle_rows_ordered))
                 image_srcs = [row[header.index('Image Src')] for row in filtered_handle_rows_ordered]
                 
-                print(f"row[header.index('Handle')]: {row[header.index('Handle')]} image_srcs: {image_srcs}")
+                #print(f"row[header.index('Handle')]: {row[header.index('Handle')]} image_srcs: {image_srcs}")
                 new_row[new_columns.index('Main Product Image')] = image_srcs[0]
                 new_row[new_columns.index('Product Image 2')] = image_srcs[1] if len(image_srcs) > 1 else ''
                 new_row[new_columns.index('Product Image 3')] = image_srcs[2] if len(image_srcs) > 2 else ''
