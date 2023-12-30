@@ -1,4 +1,4 @@
-# sudo python3 ~/temp/scrapepatanjali/scrapepatanjali/scrapepatanjali/create_tiktok_bulk_upload.py /home/ajitgoel/Downloads/patanjaliayurvedus-website-products.csv /home/ajitgoel/Downloads/tiktok-shop-bulk-upload.csv
+# sudo python3 ~/temp/scrapepatanjali/scrapepatanjali/scrapepatanjali/create_tiktok_bulk_upload.py /home/ajitgoel/Downloads/patanjaliayurvedus-website-products.csv /home/ajitgoel/Downloads/tiktok-shop-bulk-upload-beauty-personal-care.csv
 
 import csv
 import argparse
@@ -122,7 +122,7 @@ def filter_csv(input_filename, output_filename):
         handle_rows_ordered = sorted(handle_rows_filtered, key=itemgetter(header.index('Handle'), header.index('Image Position')))
 
     with open(output_filename, 'w', newline='') as new_file:
-        csv_writer = csv.writer(new_file)
+        csv_writer = csv.writer(new_file, quoting=csv.QUOTE_ALL)
         csv_writer.writerow(new_columns)
         for row in handle_rows:
             if row[header.index('Published')] == 'TRUE':
@@ -171,8 +171,8 @@ def filter_csv(input_filename, output_filename):
                 new_row[new_columns.index('Quantity in Patanjali Ayurved US')] = row[header.index('Variant Inventory Qty')]
                 new_row[new_columns.index('Seller SKU')] = handle[:49]
                 new_row[new_columns.index('Country Of Origin')] = 'India'
-                new_row[new_columns.index('Ingredients')] = result[0]
-                new_row[new_columns.index('Allergen Information')] = "" if str(result[1]).lower() in ["no", "", None] else result[1]
+                new_row[new_columns.index('Ingredients')] = result[0].replace(',',';')
+                new_row[new_columns.index('Allergen Information')] = result[1].replace(',',';')
                 new_row[new_columns.index('Package Length(inch)')] = 1 if to_float(result[2])<1 else to_float(result[2])
                 new_row[new_columns.index('Package Width(inch)')] = 1 if to_float(result[3])<1 else to_float(result[3])
                 new_row[new_columns.index('Package Height(inch)')] = 1 if to_float(result[4])<1 else to_float(result[4])
@@ -194,7 +194,6 @@ def filter_csv(input_filename, output_filename):
                 new_row[new_columns.index('Product Image 9')] = image_srcs[8] if len(image_srcs) > 8 else ''
                 #Please upload a clear photo of the product labelling showing the list of ingredients, any applicable warnings or instructions of use 
                 new_row[new_columns.index('Cosmetics Packaging Labelling')] = image_srcs[1] if len(image_srcs) > 1 else ''
-
                 csv_writer.writerow(new_row)
         
     return
