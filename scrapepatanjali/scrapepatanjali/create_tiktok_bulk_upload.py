@@ -7,17 +7,22 @@ import os
 from operator import itemgetter
 import psycopg2
 
-def get_ingredients(handle):
+def get_ingredients(handle, size):
   try:
       connection = psycopg2.connect(user="postgres",password="Meetha@1974",host="localhost",port="5432",
                                     database="postgres")
       cursor = connection.cursor()
-      select_query = """SELECT ingredients,"{}" FROM "{}" WHERE handle = %s""".format("allergy-guide-content", "LatestInvoice09262023WithIngredients")
-
-      cursor.execute(select_query, (handle,))
-      result = cursor.fetchone()
-      if result is not None:
-          return result
+      select_query = f"SELECT ingredients, allergy_guide_content, length_inches, width_inches, height_inches FROM LatestInvoice09262023WithIngredients WHERE handle = '{handle}'"
+      results = cursor.fetchall()
+      if results:
+          if len(results) > 1:
+              size = size.replace(" ", "-").lower()
+              select_query = f"SELECT ingredients, allergy_guide_content, length_inches, width_inches, height_inches FROM LatestInvoice09262023WithIngredients WHERE handle_unique = '{handle}-{size}'"
+              cursor.execute(select_query)
+              size_results = cursor.fetchall()
+              return size_results[0] if size_results else None
+          else:
+              return results[0]
       else:
           return None
   except (Exception, psycopg2.Error) as error:
@@ -60,7 +65,9 @@ def filter_csv(input_filename, output_filename):
         csv_writer.writerow(new_columns)
         for row in handle_rows:
             handle=row[header.index('Handle')]
-            result=get_ingredients(handle)
+            size=row[header.index('Option1 Value')]
+            
+            result=get_ingredients(handle, size)
             tags = row[header.index('Tags')].split(',')
             if any(tag.strip().lower() in ["toothpaste"] for tag in tags):
                 category = "Nasal & Oral Care/Toothpastes (601696)"
@@ -89,22 +96,45 @@ def filter_csv(input_filename, output_filename):
                 new_row = [''] * len(new_columns)
                 new_row[new_columns.index('Category')] = category
                 new_row[new_columns.index('Product Name')] = row[header.index('Title')]
-                new_row[new_columns.index('Brand')] = 'Patanjali'
+                new_row[new_columns.index('Brand')] = 'Patanjali (7046974046302439169)'
                 new_row[new_columns.index('Product Description')] = row[header.index('Body (Html)')]
                 try:
-                    weight_lbs = float(row[header.index('Variant Grams')]) * 0.00220462
+                    weight = float(row[header.index('Variant Grams')])
                 except ValueError:
                     weight_lbs = ''
-                new_row[new_columns.index('Package Weight(lb)')] = weight_lbs
+                new_row[new_columns.index('Package Weight(lb)')] = weight * 0.00220462
+                if weight < 10:
+                    new_row[new_columns.index('Net Weight')] = "10g"
+                elif 10 <= weight < 20:
+                    new_row[new_columns.index('Net Weight')] = "20g"
+                elif 20 <= weight < 30:
+                    new_row[new_columns.index('Net Weight')] = "30g"
+                elif 30 <= weight < 50:
+                    new_row[new_columns.index('Net Weight')] = "50g"
+                elif 50 <= weight < 100:
+                    new_row[new_columns.index('Net Weight')] = "100g"
+                elif 100 <= weight < 150:
+                    new_row[new_columns.index('Net Weight')] = "150g"
+                elif 150 <= weight < 200:
+                    new_row[new_columns.index('Net Weight')] = "200g"
+                elif 200 <= weight < 250:
+                    new_row[new_columns.index('Net Weight')] = "250g"
+                elif 250 <= weight < 300:
+                    new_row[new_columns.index('Net Weight')] = "300g"
+                else:
+                    new_row[new_columns.index('Net Weight')] = "500g"
 
                 new_row[new_columns.index('Identifier Code Type')] = 'UPC'
                 new_row[new_columns.index('Identifier Code')] = row[header.index('Variant Sku')]
                 new_row[new_columns.index('Retail Price (Local Currency)')] = row[header.index('Variant Price')]
                 new_row[new_columns.index('Quantity in Patanjali Ayurved US')] = row[header.index('Variant Inventory Qty')]
-                new_row[new_columns.index('Seller SKU')] = handle
+                new_row[new_columns.index('Seller SKU')] = handle[:49]
                 new_row[new_columns.index('Country Of Origin')] = 'India'
                 new_row[new_columns.index('Ingredients')] = result[0]
                 new_row[new_columns.index('Allergen Information')] = "" if str(result[1]).lower() in ["no", "", None] else result[1]
+                new_row[new_columns.index('Package Length(inch)')] = result[2]
+                new_row[new_columns.index('Package Width(inch)')] = result[3]
+                new_row[new_columns.index('Package Height(inch)')] = result[4]
 
                 new_row[new_columns.index('Manufacturer')] = 'Patanjali'
                 new_row[new_columns.index('Product Status')] = 'Draft'
