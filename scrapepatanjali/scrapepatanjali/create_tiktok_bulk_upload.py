@@ -12,12 +12,13 @@ def get_ingredients(handle, size):
       connection = psycopg2.connect(user="postgres",password="Meetha@1974",host="localhost",port="5432",
                                     database="postgres")
       cursor = connection.cursor()
-      select_query = f"SELECT ingredients, allergy_guide_content, length_inches, width_inches, height_inches FROM LatestInvoice09262023WithIngredients WHERE handle = '{handle}'"
+      select_query = f'SELECT ingredients, allergy_guide_content, length_inches, width_inches, height_inches FROM "LatestInvoice09262023WithIngredients" WHERE handle = \'{handle}\''
+      cursor.execute(select_query)
       results = cursor.fetchall()
       if results:
           if len(results) > 1:
               size = size.replace(" ", "-").lower()
-              select_query = f"SELECT ingredients, allergy_guide_content, length_inches, width_inches, height_inches FROM LatestInvoice09262023WithIngredients WHERE handle_unique = '{handle}-{size}'"
+              select_query = f'SELECT ingredients, allergy_guide_content, length_inches, width_inches, height_inches FROM "LatestInvoice09262023WithIngredients" WHERE handle_unique = \'{handle}-{size}\''
               cursor.execute(select_query)
               size_results = cursor.fetchall()
               return size_results[0] if size_results else None
