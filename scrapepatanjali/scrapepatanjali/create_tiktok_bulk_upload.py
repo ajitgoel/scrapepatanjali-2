@@ -6,6 +6,66 @@ from collections import OrderedDict
 import os
 from operator import itemgetter
 import psycopg2
+import math
+
+def to_float(value):
+    try:
+        return float(value)
+    except ValueError:
+        return 0
+
+def calculate_net_weight(weight):
+    if weight < 10:
+        return "10g"
+    elif 10 <= weight < 20:
+        return"20g"
+    elif 20 <= weight < 30:
+        return"30g"
+    elif 30 <= weight < 50:
+        return"50g"
+    elif 50 <= weight < 100:
+        return"100g"
+    elif 100 <= weight < 150:
+        return"150g"
+    elif 150 <= weight < 200:
+        return"200g"
+    elif 200 <= weight < 250:
+        return"250g"
+    elif 250 <= weight < 300:
+        return"300g"
+    else:
+        return"500g"
+
+def calculate_volume(size):
+    if 'ltr' in size:
+       size = int(size.replace('ltr', '')) * 1000
+    if 'kg' in size:
+       size = int(size.replace('kg', '')) * 1000
+    elif 'ml' in size:
+        size = int(size.replace('ml', ''))
+    elif 'gm' in size:
+        size = int(size.replace('gm', ''))
+
+    if size < 10:
+        return "10ml"
+    elif 10 <= size < 20:
+        return"20ml"
+    elif 20 <= size < 30:
+        return"30ml"
+    elif 30 <= size < 50:
+        return"50ml"
+    elif 50 <= size < 100:
+        return"100ml"
+    elif 100 <= size < 150:
+        return"150ml"
+    elif 150 <= size < 200:
+        return"200ml"
+    elif 200 <= size < 250:
+        return"250ml"
+    elif 250 <= size < 300:
+        return"300ml"
+    else:
+        return"500ml"
 
 def get_ingredients(handle, size):
   try:
@@ -65,67 +125,47 @@ def filter_csv(input_filename, output_filename):
         csv_writer = csv.writer(new_file)
         csv_writer.writerow(new_columns)
         for row in handle_rows:
-            handle=row[header.index('Handle')]
-            size=row[header.index('Option1 Value')]
-            
-            result=get_ingredients(handle, size)
-            tags = row[header.index('Tags')].split(',')
-            if any(tag.strip().lower() in ["toothpaste"] for tag in tags):
-                category = "Nasal & Oral Care/Toothpastes (601696)"
-            elif any(tag.strip().lower() in ["shampoo", "conditioner", "hair-cleanser"] for tag in tags):
-                category = "Haircare & Styling/Shampoo & Conditioner (601469)"
-            elif any(tag.strip().lower() in ["eye-liner"] for tag in tags):
-                category = "Makeup/Eyeliner & Lipliner (601587)"
-            elif any(tag.strip().lower() in ["mehandi", "hair-color"] for tag in tags):
-                category = "Haircare & Styling/Hair Dye (601516)"
-            elif any(tag.strip().lower() in ["sun-screen"] for tag in tags):
-                category = "Skincare/Facial Sunscreen & Sun Care (601602)"
-            elif any(tag.strip().lower() in ["hair-oil"] for tag in tags):
-                category = "Haircare & Styling/Hair Treatments/Scalp Treatments (981512)"
-            elif any(tag.strip().lower() in ["oil"] for tag in tags):
-                category = "Bath & Body Care/Body & Massage Oil (873736)"
-            elif any(tag.strip().lower() in ["face-scrub"] for tag in tags):
-                category = "Skincare/Face Scrubs & Peels (601613)"
-            elif any(tag.strip().lower() in ["foot-care"] for tag in tags):
-                category = "Hand, Foot & Nail Care/Hand Lotions, Creams & Scrubs (601480)"
-            elif any(tag.strip().lower() in ["body-cleanser", "shower-gel"] for tag in tags):
-                category = "Bath & Body Care/Body Wash & Soap (601493)"
-            elif any(tag.strip().lower() in ["face-cream", "face-pack", "face-wash"] for tag in tags):
-                category = "Skincare/Facial Cleansers (601609)"
-
             if row[header.index('Published')] == 'TRUE':
+                handle=row[header.index('Handle')]
+                size=row[header.index('Option1 Value')]
+                
+                result=get_ingredients(handle, size)
+                tags = row[header.index('Tags')].split(',')
+                weight = to_float(row[header.index('Variant Grams')])
                 new_row = [''] * len(new_columns)
+                if any(tag.strip().lower() in ["toothpaste"] for tag in tags):
+                    category = "Nasal & Oral Care/Toothpastes (601696)"
+                elif any(tag.strip().lower() in ["shampoo", "conditioner", "hair-cleanser"] for tag in tags):
+                    category = "Haircare & Styling/Shampoo & Conditioner (601469)"
+                elif any(tag.strip().lower() in ["eye-liner"] for tag in tags):
+                    category = "Makeup/Eyeliner & Lipliner (601587)"
+                elif any(tag.strip().lower() in ["mehandi", "hair-color"] for tag in tags):
+                    category = "Haircare & Styling/Hair Dye (601516)"
+                elif any(tag.strip().lower() in ["sun-screen"] for tag in tags):
+                    category = "Skincare/Facial Sunscreen & Sun Care (601602)"
+                elif any(tag.strip().lower() in ["hair-oil"] for tag in tags):
+                    category = "Haircare & Styling/Hair Treatments/Scalp Treatments (981512)"
+                elif any(tag.strip().lower() in ["oil"] for tag in tags):
+                    category = "Bath & Body Care/Body & Massage Oil (873736)"
+                    new_row[new_columns.index('Volume')] = calculate_volume(size)
+                elif any(tag.strip().lower() in ["face-scrub"] for tag in tags):
+                    category = "Skincare/Face Scrubs & Peels (601613)"
+                elif any(tag.strip().lower() in ["foot-care"] for tag in tags):
+                    category = "Hand, Foot & Nail Care/Hand Lotions, Creams & Scrubs (601480)"
+                    new_row[new_columns.index('Volume')] = calculate_volume(size)
+                elif any(tag.strip().lower() in ["body-cleanser", "shower-gel"] for tag in tags):
+                    category = "Bath & Body Care/Body Wash & Soap (601493)"
+                elif any(tag.strip().lower() in ["face-cream", "face-pack", "face-wash"] for tag in tags):
+                    category = "Skincare/Facial Cleansers (601609)"
+                    
                 new_row[new_columns.index('Category')] = category
                 new_row[new_columns.index('Product Name')] = row[header.index('Title')]
                 new_row[new_columns.index('Brand')] = 'Patanjali (7046974046302439169)'
                 new_row[new_columns.index('Product Description')] = row[header.index('Body (Html)')]
-                try:
-                    weight = float(row[header.index('Variant Grams')])
-                except ValueError:
-                    weight_lbs = ''
-                new_row[new_columns.index('Package Weight(lb)')] = weight * 0.00220462
-                if weight < 10:
-                    new_row[new_columns.index('Net Weight')] = "10g"
-                elif 10 <= weight < 20:
-                    new_row[new_columns.index('Net Weight')] = "20g"
-                elif 20 <= weight < 30:
-                    new_row[new_columns.index('Net Weight')] = "30g"
-                elif 30 <= weight < 50:
-                    new_row[new_columns.index('Net Weight')] = "50g"
-                elif 50 <= weight < 100:
-                    new_row[new_columns.index('Net Weight')] = "100g"
-                elif 100 <= weight < 150:
-                    new_row[new_columns.index('Net Weight')] = "150g"
-                elif 150 <= weight < 200:
-                    new_row[new_columns.index('Net Weight')] = "200g"
-                elif 200 <= weight < 250:
-                    new_row[new_columns.index('Net Weight')] = "250g"
-                elif 250 <= weight < 300:
-                    new_row[new_columns.index('Net Weight')] = "300g"
-                else:
-                    new_row[new_columns.index('Net Weight')] = "500g"
+                new_row[new_columns.index('Package Weight(lb)')] = math.ceil(weight * 0.00220462)
+                new_row[new_columns.index('Net Weight')] = calculate_net_weight(weight)
 
-                new_row[new_columns.index('Identifier Code Type')] = 'UPC'
+                new_row[new_columns.index('Identifier Code Type')] = 'UPC (3)'
                 new_row[new_columns.index('Identifier Code')] = row[header.index('Variant Sku')]
                 new_row[new_columns.index('Retail Price (Local Currency)')] = row[header.index('Variant Price')]
                 new_row[new_columns.index('Quantity in Patanjali Ayurved US')] = row[header.index('Variant Inventory Qty')]
@@ -133,10 +173,10 @@ def filter_csv(input_filename, output_filename):
                 new_row[new_columns.index('Country Of Origin')] = 'India'
                 new_row[new_columns.index('Ingredients')] = result[0]
                 new_row[new_columns.index('Allergen Information')] = "" if str(result[1]).lower() in ["no", "", None] else result[1]
-                new_row[new_columns.index('Package Length(inch)')] = result[2]
-                new_row[new_columns.index('Package Width(inch)')] = result[3]
-                new_row[new_columns.index('Package Height(inch)')] = result[4]
-
+                new_row[new_columns.index('Package Length(inch)')] = 1 if to_float(result[2])<1 else to_float(result[2])
+                new_row[new_columns.index('Package Width(inch)')] = 1 if to_float(result[3])<1 else to_float(result[3])
+                new_row[new_columns.index('Package Height(inch)')] = 1 if to_float(result[4])<1 else to_float(result[4])
+                new_row[new_columns.index('Quantity Per Pack')] = '1'
                 new_row[new_columns.index('Manufacturer')] = 'Patanjali'
                 new_row[new_columns.index('Product Status')] = 'Draft'
 
@@ -152,6 +192,8 @@ def filter_csv(input_filename, output_filename):
                 new_row[new_columns.index('Product Image 7')] = image_srcs[6] if len(image_srcs) > 6 else ''
                 new_row[new_columns.index('Product Image 8')] = image_srcs[7] if len(image_srcs) > 7 else ''
                 new_row[new_columns.index('Product Image 9')] = image_srcs[8] if len(image_srcs) > 8 else ''
+                #Please upload a clear photo of the product labelling showing the list of ingredients, any applicable warnings or instructions of use 
+                new_row[new_columns.index('Cosmetics Packaging Labelling')] = image_srcs[1] if len(image_srcs) > 1 else ''
 
                 csv_writer.writerow(new_row)
         
