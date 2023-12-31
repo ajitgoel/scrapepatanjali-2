@@ -1,12 +1,12 @@
-# sudo python3 ~/temp/scrapepatanjali/scrapepatanjali/scrapepatanjali/create_tiktok_bulk_upload.py /home/ajitgoel/Downloads/patanjaliayurvedus-website-products.csv /home/ajitgoel/Downloads/tiktok-shop-bulk-upload-beauty-personal-care.csv
+# cd ~/temp/scrapepatanjali/ && source scrapy-env/bin/activate && sudo python3 ~/temp/scrapepatanjali/scrapepatanjali/scrapepatanjali/create_tiktok_bulk_upload.py /home/ajitgoel/Downloads/patanjaliayurvedus-website-products.csv /home/ajitgoel/Downloads
 
 import csv
 import argparse
-from collections import OrderedDict
-import os
 from operator import itemgetter
 import psycopg2
 import math
+
+BRAND='Patanjali (7046974046302439169)'
 
 def to_float(value):
     try:
@@ -94,7 +94,7 @@ def get_ingredients(handle, size):
           cursor.close()
           connection.close()
 
-def filter_csv(input_filename, output_filename):
+def create_beauty_personal_care_file(input_filename, output_filename):
     new_columns = ['Category', 'Brand', 'Product Name', 'Product Description', 'Package Weight(lb)', 
                    'Package Length(inch)', 'Package Width(inch)', 'Package Height(inch)', 'Delivery options',
                    'Identifier Code Type', 'Identifier Code', 'Variation 1', 'Variation 2', 'Variant Image', 
@@ -106,22 +106,27 @@ def filter_csv(input_filename, output_filename):
                    'Quantity Per Pack', 'Skincare Benefits', 'Body Care Benefits', 'Cautions/Warnings', 
                    'Manufacturer', 'Drug Labeling', 'US Certificate of Conformity', 'Declaration of Conformity', 
                    'Cosmetics Packaging Labelling', 'Product Status']
-    
-    tags = ["oil", "body-cleanser", "toothpaste", "hair-oil", "shower-gel", "conditioner", "mehandi,hair-color", 
-          "hair-cleanser", "shampoo", "face-wash", "face-scrub", "face-pack", "foot-care", "face-cream", "eye-liner"]
+
+    TAGS_BEAUTY_PERSONAL_CARE = ["oil", "body-cleanser", "toothpaste", "hair-oil", "shower-gel", "conditioner",
+                                 "mehandi", "hair-color", "hair-cleanser", "shampoo", "face-wash", "face-scrub",
+                                 "face-pack", "foot-care", "face-cream", "eye-liner", "kajal", "eye-care",
+                                 #"sun-screen", "agarbatti-and-dhoops"
+                                 ]
 
     with open(input_filename, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         header = next(csv_reader)
         rows = [row for row in csv_reader]
         rows_published_true = [row for row in rows if row[header.index('Published')] == 'TRUE']
-        rows_selectedTags = [row for row in rows_published_true if any(tag in row[header.index('Tags')].split(',') for tag in tags)]
+        rows_selectedTags = [row for row in rows_published_true if any(tag in row[header.index('Tags')].split(',')
+                                                                       for tag in TAGS_BEAUTY_PERSONAL_CARE)]
         handle_values = list(set([row[header.index('Handle')] for row in rows_selectedTags]))
         handle_rows = [row for row in rows if row[header.index('Handle')] in handle_values]   
         handle_rows_filtered = list(filter(lambda row: row[header.index('Image Position')], handle_rows))
-        handle_rows_ordered = sorted(handle_rows_filtered, key=itemgetter(header.index('Handle'), header.index('Image Position')))
+        handle_rows_ordered = sorted(handle_rows_filtered, key=itemgetter(header.index('Handle'),
+                                                                          header.index('Image Position')))
 
-    with open(output_filename, 'w', newline='') as new_file:
+    with (open(f'{output_filename}/tiktok_bulk_upload_beauty_personal_care_file.csv', 'w', newline='') as new_file):
         csv_writer = csv.writer(new_file, quoting=csv.QUOTE_ALL)
         csv_writer.writerow(new_columns)
         for row in handle_rows:
@@ -137,7 +142,7 @@ def filter_csv(input_filename, output_filename):
                     category = "Nasal & Oral Care/Toothpastes (601696)"
                 elif any(tag.strip().lower() in ["shampoo", "conditioner", "hair-cleanser"] for tag in tags):
                     category = "Haircare & Styling/Shampoo & Conditioner (601469)"
-                elif any(tag.strip().lower() in ["eye-liner"] for tag in tags):
+                elif any(tag.strip().lower() in ["eye-liner", "kajal", "eye-care"] for tag in tags):
                     category = "Makeup/Eyeliner & Lipliner (601587)"
                 elif any(tag.strip().lower() in ["mehandi", "hair-color"] for tag in tags):
                     category = "Haircare & Styling/Hair Dye (601516)"
@@ -160,10 +165,10 @@ def filter_csv(input_filename, output_filename):
                     
                 new_row[new_columns.index('Category')] = category
                 new_row[new_columns.index('Product Name')] = row[header.index('Title')]
-                new_row[new_columns.index('Brand')] = 'Patanjali (7046974046302439169)'
+                new_row[new_columns.index('Brand')] = BRAND
                 new_row[new_columns.index('Product Description')] = row[header.index('Body (Html)')]
-                new_row[new_columns.index('Package Weight(lb)')] = math.ceil(weight * 0.00220462)
-                new_row[new_columns.index('Net Weight')] = calculate_net_weight(weight)
+                new_row[new_columns.index('Package Weight(lb)')] = math.ceil(weight)
+                new_row[new_columns.index('Net Weight')] = calculate_net_weight(weight/0.00220462)
 
                 new_row[new_columns.index('Identifier Code Type')] = 'UPC (3)'
                 new_row[new_columns.index('Identifier Code')] = row[header.index('Variant Sku')]
@@ -192,10 +197,109 @@ def filter_csv(input_filename, output_filename):
                 new_row[new_columns.index('Product Image 7')] = image_srcs[6] if len(image_srcs) > 6 else ''
                 new_row[new_columns.index('Product Image 8')] = image_srcs[7] if len(image_srcs) > 7 else ''
                 new_row[new_columns.index('Product Image 9')] = image_srcs[8] if len(image_srcs) > 8 else ''
-                #Please upload a clear photo of the product labelling showing the list of ingredients, any applicable warnings or instructions of use 
+                #Please upload a clear photo of the product labelling showing the list of ingredients, any applicable warnings or instructions of use
                 new_row[new_columns.index('Cosmetics Packaging Labelling')] = image_srcs[1] if len(image_srcs) > 1 else ''
                 csv_writer.writerow(new_row)
         
+    return
+
+def create_food_beverages_file(input_filename, output_filename):
+    new_columns = ['Category', 'Brand', 'Product Name', 'Product Description', 'Package Weight(lb)',
+                   'Package Length(inch)', 'Package Width(inch)', 'Package Height(inch)', 'Delivery options',
+                   'Identifier Code Type', 'Identifier Code', 'Variation 1', 'Variation 2', 'Variant Image',
+                   'Retail Price (Local Currency)', 'Quantity in Patanjali Ayurved US', 'Seller SKU',
+                   'Main Product Image', 'Product Image 2', 'Product Image 3', 'Product Image 4', 'Product Image 5',
+                   'Product Image 6', 'Product Image 7', 'Product Image 8', 'Product Image 9', 'Size Chart',
+                   'Country Of Origin', 'Allergen Information', 'Net Weight', 'Volume', 'Ingredients',
+                   'Alcohol Percentage', 'Age Warning', 'Organic', 'Year of Production', 'Packaging Type',
+                   'Manufacturer', 'Storage Type', 'Flavor', 'Food Labeling', 'Product Status']
+    TAGS_FOOD_BEVERAGES = ["badam-pak", "biscuits-and-cookies", "breakfast-cereals", "chyawanprash",
+                           "dalia-poha-and-vermicelli", "digestives", "dosa", "edible-oil", "eye-care",
+                           "ghee", "health-drinks", "honey", "idli", "noodles", "rice", "salt", "soya-chunks", "spices"]
+    with open(input_filename, 'r') as csv_file:
+        csv_reader = csv.reader(csv_file)
+        header = next(csv_reader)
+        rows = [row for row in csv_reader]
+        rows_published_true = [row for row in rows if row[header.index('Published')] == 'TRUE']
+        rows_selectedTags = [row for row in rows_published_true if any(tag in row[header.index('Tags')].split(',') for tag in TAGS_FOOD_BEVERAGES)]
+        handle_values = list(set([row[header.index('Handle')] for row in rows_selectedTags]))
+        handle_rows = [row for row in rows if row[header.index('Handle')] in handle_values]   
+        handle_rows_filtered = list(filter(lambda row: row[header.index('Image Position')], handle_rows))
+        handle_rows_ordered = sorted(handle_rows_filtered, key=itemgetter(header.index('Handle'), header.index('Image Position')))
+
+    with open(f'{output_filename}/tiktok_bulk_upload_food_beverages_file.csv', 'w', newline='') as new_file:
+        csv_writer = csv.writer(new_file, quoting=csv.QUOTE_ALL)
+        csv_writer.writerow(new_columns)
+        for row in handle_rows:
+            if row[header.index('Published')] == 'TRUE':
+                handle=row[header.index('Handle')]
+                size=row[header.index('Option1 Value')]
+                
+                result=get_ingredients(handle, size)
+                tags = row[header.index('Tags')].split(',')
+                weight = to_float(row[header.index('Variant Grams')])
+                new_row = [''] * len(new_columns)
+                if any(tag.strip().lower() in ["badam-pak", "chyawanprash"] for tag in tags):
+                    category = "Instant Food/Canned, Jarred & Packaged Foods (918280)"
+                elif any(tag.strip().lower() in ["biscuits-and-cookies"] for tag in tags):
+                    category = "Snacks/Biscuits, Cookies & Wafers (700553)"
+                elif any(tag.strip().lower() in ["breakfast-cereals", "dalia-poha-and-vermicelli", "dosa", "idli", "noodles"] for tag in tags):
+                    category = "Staples & Cooking Essentials/Pasta, Noodles & Vermicelli (918024)"
+                elif any(tag.strip().lower() in ["digestives"] for tag in tags):
+                    category = "Snacks/Candy (921736)"
+                elif any(tag.strip().lower() in ["edible-oil", "ghee"] for tag in tags):
+                    category = "Staples & Cooking Essentials/Oils (918920)"
+                elif any(tag.strip().lower() in ["health-drinks"] for tag in tags):
+                    category = "Drinks/Juice & Smoothies (916744)"
+                elif any(tag.strip().lower() in ["honey"] for tag in tags):
+                    category = "Staples & Cooking Essentials/Honey & Maple Syrup (920328)"
+                elif any(tag.strip().lower() in ["rice"] for tag in tags):
+                    category = "Staples & Cooking Essentials/Rice (917896)"
+                elif any(tag.strip().lower() in ["salt"] for tag in tags):
+                    category = "Staples & Cooking Essentials/Salt (919304)"
+                elif any(tag.strip().lower() in ["spices"] for tag in tags):
+                    category = "Staples & Cooking Essentials/Herbs, Spices & Seasonings (919176)"
+                elif any(tag.strip().lower() in ["soya-chunks"] for tag in tags):
+                    category = "Staples & Cooking Essentials/Dried Foods (963336)"
+
+                new_row[new_columns.index('Category')] = category
+                new_row[new_columns.index('Product Name')] = row[header.index('Title')]
+                new_row[new_columns.index('Brand')] = BRAND
+                new_row[new_columns.index('Product Description')] = row[header.index('Body (Html)')]
+                new_row[new_columns.index('Package Weight(lb)')] = math.ceil(weight)
+                new_row[new_columns.index('Net Weight')] = calculate_net_weight(weight/0.00220462)
+
+                new_row[new_columns.index('Identifier Code Type')] = 'UPC (3)'
+                new_row[new_columns.index('Identifier Code')] = row[header.index('Variant Sku')]
+                new_row[new_columns.index('Retail Price (Local Currency)')] = row[header.index('Variant Price')]
+                new_row[new_columns.index('Quantity in Patanjali Ayurved US')] = row[header.index('Variant Inventory Qty')]
+                new_row[new_columns.index('Seller SKU')] = handle[:49]
+                new_row[new_columns.index('Country Of Origin')] = 'India'
+                new_row[new_columns.index('Ingredients')] = result[0].replace(',',';')
+                new_row[new_columns.index('Allergen Information')] = result[1].replace(',',';')
+                new_row[new_columns.index('Package Length(inch)')] = 1 if to_float(result[2])<1 else to_float(result[2])
+                new_row[new_columns.index('Package Width(inch)')] = 1 if to_float(result[3])<1 else to_float(result[3])
+                new_row[new_columns.index('Package Height(inch)')] = 1 if to_float(result[4])<1 else to_float(result[4])
+                new_row[new_columns.index('Manufacturer')] = 'Patanjali'
+                new_row[new_columns.index('Product Status')] = 'Draft'
+
+                filtered_handle_rows_ordered = list(filter(lambda x: x[header.index('Handle')] == handle, handle_rows_ordered))
+                image_srcs = [row[header.index('Image Src')] for row in filtered_handle_rows_ordered]
+                
+                new_row[new_columns.index('Main Product Image')] = image_srcs[0]
+                new_row[new_columns.index('Product Image 2')] = image_srcs[1] if len(image_srcs) > 1 else ''
+                new_row[new_columns.index('Product Image 3')] = image_srcs[2] if len(image_srcs) > 2 else ''
+                new_row[new_columns.index('Product Image 4')] = image_srcs[3] if len(image_srcs) > 3 else ''
+                new_row[new_columns.index('Product Image 5')] = image_srcs[4] if len(image_srcs) > 4 else ''
+                new_row[new_columns.index('Product Image 6')] = image_srcs[5] if len(image_srcs) > 5 else ''
+                new_row[new_columns.index('Product Image 7')] = image_srcs[6] if len(image_srcs) > 6 else ''
+                new_row[new_columns.index('Product Image 8')] = image_srcs[7] if len(image_srcs) > 7 else ''
+                new_row[new_columns.index('Product Image 9')] = image_srcs[8] if len(image_srcs) > 8 else ''
+                new_row[new_columns.index('Age Warning')] = 'No'
+                # Please upload a clear product labeling photo showing the product name, the list of ingredients, declaration of allergens, nutrition facts labels, name and address of the manufacturer or distributor, net content quantity and weight and country of origin in English language.
+                new_row[new_columns.index('Food Labeling')] = image_srcs[1] if len(image_srcs) > 1 else ''
+
+                csv_writer.writerow(new_row)
     return
 
 def main():
@@ -204,6 +308,7 @@ def main():
     parser.add_argument('output_filename')
     args, unknown = parser.parse_known_args()
 
-    filter_csv(args.input_filename, args.output_filename)
+    create_beauty_personal_care_file(args.input_filename, args.output_filename)
+    create_food_beverages_file(args.input_filename, args.output_filename)
 if __name__ == '__main__':
     main()
